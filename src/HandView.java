@@ -6,10 +6,15 @@ public class HandView {
     int positiony;
     String imageName;
     JLabel imageLabel;
-    HandView(int positionX, int positiony, String imageName) {
-        this.positionX = positionX;
-        this.positiony = positiony;
+    HandView(double positionX, double positiony, String imageName) {
+
+        // cast to int since double was required for trig
+        int positionXLabel = (int) positionX;
+        int positionYLabel = (int) positiony;
+
+        this.positionX = positionXLabel;
+        this.positiony = positionYLabel;
         imageLabel = new JLabel(imageName);
-        imageLabel.setBounds(positionX, positiony, 50, 100);
+        imageLabel.setBounds(positionXLabel, positionYLabel, 50, 100);
     }
 }
