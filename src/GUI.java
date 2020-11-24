@@ -1,14 +1,16 @@
 import javax.swing.*;
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class GUI {
     public static JFrame frame;
     public static JPanel playPanel;
 
-    // usersHandsList contains every single hand and the object associated with their cards
-    public static ArrayList<HandView> usersHandsList = new ArrayList<HandView>();
-    // handViewList contains the number of cards for this one user
-    public static ArrayList<HandView> handViewList = new ArrayList<HandView>();
+
+    // handViewList contains the number of cards for this one user. Main contains all user's hands
+    public static ArrayList<ArrayList<HandView>> usersHandsList = new ArrayList<ArrayList<HandView>>(3);
+    public static ArrayList<HandView> cardList = new ArrayList<HandView>();
+
     public static void main(String[] args) {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,16 +20,30 @@ public class GUI {
         playPanel.setLayout(null);
         frame.add(playPanel);
 
-        // create 3 labels next to each other
-        int positionX = 0;
-        int positiony = 0;
+        // create 3 labels next to each other 3 separate times
+        double positionX = 80;
+        double positiony = 350;
+        double radius = Math.toRadians(2000);
+        double angleVariable = 1;
+        double direction = 0;
+
+        // 3 decks --> 1 for dealer, 2 for ea. player...
         for (int i = 0; i < 3; i ++) {
-            HandView handView = new HandView(positionX, positiony, "Hi");
-            handViewList.add(handView);
-            playPanel.add(handView.imageLabel);
-            positionX += 20;
-            positiony += 20;
+            for (int j = 0; j < 3; j ++) {
+
+
+                // modify position on a semicircle
+                direction = 25 * Math.sin(angleVariable);
+                positionX = positionX + (radius * Math.cos(angleVariable));
+                positiony = positiony + (radius * Math.sin(angleVariable));
+                HandView handView = new HandView(positionX, positiony, "Hi");
+                cardList.add(handView);
+                playPanel.add(handView.imageLabel);
+            }
+            usersHandsList.add(cardList);
+
         }
+
 
         frame.setVisible(true);
     }
