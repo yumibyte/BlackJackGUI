@@ -14,6 +14,6 @@ public class CardView {
         imageLabel = new JLabel(imageName);
         imageLabel.setBounds(positionX, positiony, 50, 100);
 
-        GUI.panel.add(imageLabel);
+        GUI.mainPanel.add(imageLabel);
     }
 }
