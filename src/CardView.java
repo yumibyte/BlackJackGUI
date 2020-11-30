@@ -13,5 +13,7 @@ public class CardView {
         this.positiony = positiony;
         imageLabel = new JLabel(imageName);
         imageLabel.setBounds(positionX, positiony, 50, 100);
+
+        GUI.playPanel.add(imageLabel);
     }
 }

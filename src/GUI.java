@@ -5,7 +5,7 @@ import java.lang.Math;
 public class GUI {
     public static JFrame frame;
     public static JPanel playPanel;
-
+    public static HandView handView = new HandView();
 
     public static void main(String[] args) {
         frame = new JFrame();
@@ -25,11 +25,14 @@ public class GUI {
 
         // 3 decks --> 1 for dealer, 2 for ea. player...
 
+        handView.createCard("1", 'l');
+        handView.createCard("2", 'l');
+        handView.createCard("1", 'r');
+        handView.createCard("2", 'r');
 
-        cardList.add(card1L);
-        cardList.add(card2L);
-        cardList.add(card3L);
-        playPanel.add()
+
+
+//        playPanel.add(usersHandsList.get(0));
 
 
 
