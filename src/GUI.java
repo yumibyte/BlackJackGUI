@@ -8,6 +8,8 @@ public class GUI implements ActionListener {
     public static JButton playButton;
     public static JPanel mainPanel;
     public static MainMenuView mainMenuView;
+    public static PlayView playView;
+
 
 
 
@@ -35,8 +37,11 @@ public class GUI implements ActionListener {
 //            String bet = JOptionPane.showInputDialog(playPanel, "What is your bet?", null);
 
             frame.removeAll();      // clear current frame
+            frame.revalidate();
+            frame.repaint();
 
-
+            playView = new PlayView();
+            frame.add(playView.label);
         }
     }
 }
