@@ -1,66 +1,54 @@
 import javax.swing.*;
-import java.util.ArrayList;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.Math;
 
-public class GUI {
+public class GUI implements ActionListener {
     public static JFrame frame;
-    public static JPanel playPanel;
+    public static JPanel panel;
     public static HandView handView = new HandView();
+    public static JButton playButton;
+
 
     public static void main(String[] args) {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900, 650);
 
-        playPanel = new JPanel();
-        playPanel.setLayout(null);
-        frame.add(playPanel);
+        panel = new JPanel();
+        panel.setLayout(null);
+        frame.add(panel);
 
-        // create 3 labels next to each other 3 separate times
-        double positionX = 80;
-        double positiony = 350;
-        double radius = Math.toRadians(1000);
-        double angleVariable = 45;
-        double direction = 0;
+        JLabel blackJackLabel = new JLabel("BlackJack");
+        blackJackLabel.setBounds(350, 50, 300, 50);
+        blackJackLabel.setFont(new Font("Helvetica", Font.PLAIN, 40));
+        panel.add(blackJackLabel);
 
         // 3 decks --> 1 for dealer, 2 for ea. player...
 
-        handView.createCard("1", 'l');
-        handView.createCard("2", 'l');
-        handView.createCard("1", 'r');
-        handView.createCard("2", 'r');
+        playButton = new JButton("Single Player");
+        playButton.setBounds(300, 275, 300, 50);
+        playButton.addActionListener(new GUI());
+        panel.add(playButton);
 
 
 
-//        playPanel.add(usersHandsList.get(0));
+//        handView.createCard("1", 'l');
+//        handView.createCard("2", 'l');
+//        handView.createCard("1", 'r');
+//        handView.createCard("2", 'r');
 
 
-
-//        for (int i = 0; i < 3; i ++) {
-//            for (int j = 0; j < 3; j ++) {
-//                // modify position on a semicircle
-//                direction = 25 * Math.sin(angleVariable);
-//                positionX = positionX + (radius * Math.cos(angleVariable));
-//                positiony = positiony + (radius * Math.sin(angleVariable));
-////                HandView handView = new HandView(positionX, positiony, "Hi");
-////                cardList.add(handView);
-////                playPanel.add(handView.imageLabel);
-////                System.out.println(positionX);
-//                System.out.println(positiony);
-//            }
-//            radius = radius * -1;
-//            angleVariable = angleVariable * -4;
-//            positionX += 600;
-//            if (i == 1) {
-//                positionX -= 900;       // undo adjustments to x put place iin middle
-//                positiony += 200;
-//            }
-//
-//            usersHandsList.add(cardList);
-//
-//        }
 
 
         frame.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == playButton) {
+            String bet = JOptionPane.showInputDialog(panel, "What is your bet?", null);
+        }
     }
 }
