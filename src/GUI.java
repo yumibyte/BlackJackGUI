@@ -32,14 +32,15 @@ public class GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == mainMenuView.menuButton) {
-//            String bet = JOptionPane.showInputDialog(playPanel, "What is your bet?", null);
-
+        if (e.getSource() == mainMenuView.singlePlayerButton) {
 
             mainPanel = playView.retrievePanel();
-
             frame.setContentPane(mainPanel);
             mainPanel.revalidate();
+
+            // take users bet immediately
+
+            String bet = JOptionPane.showInputDialog(mainPanel, "What is your bet?", "Don't be a cheapskate!", JOptionPane.QUESTION_MESSAGE);
 //            mainPanel.repaint();        // clears frame
         }
     }

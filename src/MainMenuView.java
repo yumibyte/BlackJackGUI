@@ -5,7 +5,7 @@ public class MainMenuView {
 
     JPanel menuPanel;
     JLabel blackJackLabel;
-    JButton menuButton;
+    JButton singlePlayerButton;
 
     MainMenuView() {
         menuPanel = new JPanel();
@@ -18,16 +18,15 @@ public class MainMenuView {
 
         // 3 decks --> 1 for dealer, 2 for ea. menuer...
 
-        menuButton = new JButton("Single menu");
-        menuButton.setBounds(300, 275, 300, 50);
-        menuButton.addActionListener(new GUI());
-        menuPanel.add(menuButton);
+        singlePlayerButton = new JButton("Single menu");
+        singlePlayerButton.setBounds(300, 275, 300, 50);
+        singlePlayerButton.addActionListener(new GUI());
+        menuPanel.add(singlePlayerButton);
     }
 
     JPanel retrievePanel() {
         return menuPanel;
-//        Thread thread = new Thread(); // run on new thread
-//        thread.start();
+
 
     }
 
