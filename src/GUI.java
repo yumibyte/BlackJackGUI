@@ -7,8 +7,8 @@ public class GUI implements ActionListener {
     public static HandView handView = new HandView();
     public static JButton playButton;
     public static JPanel mainPanel;
-    public static MainMenuView mainMenuView;
-    public static PlayView playView;
+    public static MainMenuView mainMenuView = new MainMenuView();
+    public static PlayView playView = new PlayView();
 
 
 
@@ -20,8 +20,8 @@ public class GUI implements ActionListener {
 
 //        mainPanel = new JPanel();
 
-        mainMenuView = new MainMenuView();     // instantiate main view
-
+        mainPanel = mainMenuView.retrievePanel();     // instantiate main view
+        frame.add(mainPanel);
 //        handView.createCard("1", 'l');
 //        handView.createCard("2", 'l');
 //        handView.createCard("1", 'r');
@@ -35,13 +35,11 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainMenuView.menuButton) {
 //            String bet = JOptionPane.showInputDialog(playPanel, "What is your bet?", null);
+            mainPanel.revalidate();
+            mainPanel = playView.retrievePanel();
 
-            frame.removeAll();      // clear current frame
-            frame.revalidate();
-            frame.repaint();
+            frame.add(mainPanel);
 
-            playView = new PlayView();
-            frame.add(playView.label);
         }
     }
 }

@@ -22,10 +22,12 @@ public class MainMenuView {
         menuButton.setBounds(300, 275, 300, 50);
         menuButton.addActionListener(new GUI());
         menuPanel.add(menuButton);
+    }
 
-        GUI.frame.add(menuPanel);
-        Thread thread = new Thread(); // run on new thread
-        thread.start();
+    JPanel retrievePanel() {
+        return menuPanel;
+//        Thread thread = new Thread(); // run on new thread
+//        thread.start();
 
     }
 
