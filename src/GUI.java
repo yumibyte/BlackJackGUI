@@ -15,7 +15,7 @@ public class GUI implements ActionListener {
     public static void main(String[] args) {
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900, 650);
+        frame.setSize(1000, 760);       // based on image of BlackJackImage.jpg (background)
 
 //        mainPanel = new JPanel();
 
