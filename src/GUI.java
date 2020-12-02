@@ -36,6 +36,7 @@ public class GUI implements ActionListener {
         if (e.getSource() == mainMenuView.menuButton) {
 //            String bet = JOptionPane.showInputDialog(playPanel, "What is your bet?", null);
             mainPanel.revalidate();
+            mainPanel.repaint();        // clears frame
             mainPanel = playView.retrievePanel();
 
             frame.add(mainPanel);
