@@ -15,15 +15,15 @@ public class PlayView {
         ImageIcon blackJackBackground = new ImageIcon("BlackJackImage.jpg");
         background.setIcon(blackJackBackground);
         background.setBounds(200, 400, 1000, 600);
-        background.setLayout(new FlowLayout(FlowLayout.CENTER));
+//        background.setLayout(new FlowLayout(FlowLayout.CENTER));
         playViewPanel.add(background);
 
         hitButton = new JButton("Hit!");
-        hitButton.setBounds(50, 50, 100, 50);
+        hitButton.setBounds(100, 50, 175, 50);
         background.add(hitButton);
 
         standButton = new JButton("Stand");
-        standButton.setBounds(300, 50, 100, 50);
+        standButton.setBounds(700, 50, 175, 50);
         background.add(standButton);
 
     }
