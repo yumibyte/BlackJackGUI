@@ -9,6 +9,7 @@ public class GUI implements ActionListener {
     public static MainMenuView mainMenuView = new MainMenuView();
     public static PlayView playView = new PlayView();
 
+    public static double inputBet;
 
 
 
@@ -40,8 +41,8 @@ public class GUI implements ActionListener {
 
             // take users bet immediately
 
-            String bet = JOptionPane.showInputDialog(mainPanel, "What is your bet?", "Don't be a cheapskate!", JOptionPane.QUESTION_MESSAGE);
-//            mainPanel.repaint();        // clears frame
+            String bet = JOptionPane.showInputDialog(mainPanel, "What is your bet in dollars? (Ex.: 50)?", "Don't be a cheapskate!", JOptionPane.QUESTION_MESSAGE);
+            inputBet = Integer.parseInt(bet);
         }
     }
 }
