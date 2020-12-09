@@ -20,10 +20,12 @@ public class PlayView {
 
         hitButton = new JButton("Hit!");
         hitButton.setBounds(100, 50, 175, 50);
+        hitButton.addActionListener(new GUI());
         background.add(hitButton);
 
         standButton = new JButton("Stand");
         standButton.setBounds(700, 50, 175, 50);
+        standButton.addActionListener(new GUI());
         background.add(standButton);
 
         betLabel = new JLabel("My Bet: ");

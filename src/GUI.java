@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class GUI implements ActionListener {
     public static JFrame frame;
-    public static HandView handView = new HandView();
+//    public static HandView handView = new HandView();
     public static JPanel mainPanel;
     public static MainMenuView mainMenuView = new MainMenuView();
     public static PlayView playView = new PlayView();
@@ -48,5 +48,12 @@ public class GUI implements ActionListener {
             inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + inputBet);
         }
+        else if (e.getSource() == playView.hitButton) {
+            cardFunctionality.hit();
+        }
+        else if (e.getSource() == playView.standButton) {
+            cardFunctionality.stand();
+        }
+
     }
 }

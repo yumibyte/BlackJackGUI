@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class HandView {
 
     // handViewList contains the number of cards for this one user. Main contains all user's hands
