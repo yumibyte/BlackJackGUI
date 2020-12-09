@@ -7,6 +7,7 @@ public class PlayView {
     JLabel background;
     JButton hitButton;
     JButton standButton;
+    JLabel betLabel;
 
     PlayView() {
         playViewPanel = new JPanel();
@@ -15,7 +16,6 @@ public class PlayView {
         ImageIcon blackJackBackground = new ImageIcon("BlackJackImage.jpg");
         background.setIcon(blackJackBackground);
         background.setBounds(200, 400, 1000, 600);
-//        background.setLayout(new FlowLayout(FlowLayout.CENTER));
         playViewPanel.add(background);
 
         hitButton = new JButton("Hit!");
@@ -25,6 +25,11 @@ public class PlayView {
         standButton = new JButton("Stand");
         standButton.setBounds(700, 50, 175, 50);
         background.add(standButton);
+
+        betLabel = new JLabel("My Bet: ");
+        betLabel.setBounds(20, 650, 500, 25);
+        betLabel.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 20));
+        background.add(betLabel);
 
     }
 

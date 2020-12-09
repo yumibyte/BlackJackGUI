@@ -43,6 +43,7 @@ public class GUI implements ActionListener {
 
             String bet = JOptionPane.showInputDialog(mainPanel, "What is your bet in dollars? (Ex.: 50)?", "Don't be a cheapskate!", JOptionPane.QUESTION_MESSAGE);
             inputBet = Integer.parseInt(bet);
+            playView.betLabel.setText("My Bet: " + inputBet);
         }
     }
 }
