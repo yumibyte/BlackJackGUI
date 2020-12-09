@@ -8,12 +8,15 @@ public class GUI implements ActionListener {
     public static JPanel mainPanel;
     public static MainMenuView mainMenuView = new MainMenuView();
     public static PlayView playView = new PlayView();
+    public static CardFunctionality cardFunctionality = new CardFunctionality();
 
     public static double inputBet;
 
 
 
     public static void main(String[] args) {
+
+        cardFunctionality.retrieveNewDeck();
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 760);       // based on image of BlackJackImage.jpg (background)
