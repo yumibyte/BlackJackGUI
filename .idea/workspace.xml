@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ab772b-8339-485b-8256-a41a106ad6ab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardFunctionality.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +29,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -90,22 +92,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="23" />
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>34</line>
-          <properties class="GUI" method="actionPerformed">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
