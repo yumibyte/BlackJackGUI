@@ -64,7 +64,7 @@ public class CardFunctionality {
         switch(side) {
             case 'l':       // left
                 positionX = 20;
-                positiony = 20;
+                positiony = 100;
                 sideInt = 0;
                 break;
             case 'r':       // right
