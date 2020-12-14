@@ -10,9 +10,10 @@ public class PlayView {
     JLabel betLabel;
 
     // score labels w/ total points
-    JLabel scoreL;
-    JLabel scoreR;
-    JLabel scoreM;      // dealer
+    // use public static so they are set in CardFunctionality
+    public static JLabel scoreL;
+    public static JLabel scoreR;
+    public static JLabel scoreM;      // dealer
     PlayView() {
         playViewPanel = new JPanel();
         background = new JLabel();
