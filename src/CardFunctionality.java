@@ -75,9 +75,22 @@ public class CardFunctionality {
 
         for (int player = 0; player < 3; player ++) {
             for (int card = 0; card < usersHandsList[player].length; card ++) {
-                usersHandsList[player][card].//
+
+                switch (player) {
+                    case 0:
+                        totalScoreL += usersHandsList[player][card].value;
+                        break;
+                    case 1:
+                        totalScoreR += usersHandsList[player][card].value;
+                        break;
+                    case 2:
+                        totalScoreM+= usersHandsList[player][card].value;
+                        break;
+                }
             }
         }
+
+
     }
     void createCard(String cardName, int side) {
 

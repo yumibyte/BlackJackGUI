@@ -25,14 +25,15 @@ public class CardView {
 
         // associate value
         String[] cardStringContents = imageName.substring(-4).split("_");
-        
-        switch (cardStringContents[1]) {
-            case "ace":
 
-                value = 1;
+        switch (cardStringContents[1]) {
+
+            case "ace":
+                value = 11;
                 int currentSide = CardFunctionality.currentSide;
 
                 // nested case to check if there's an ace
+                // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
                 switch (currentSide) {
                     case 0:
                         hasAceL = true;
@@ -45,8 +46,13 @@ public class CardView {
                         break;
                 }
                 break;
+
             case "jack": case "king": case "queen":
                 value = 10;
+                break;
+
+            default:        // every other suit
+                value = Integer.parseInt(cardStringContents[1]);
                 break;
         }
 
