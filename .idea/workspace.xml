@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="85ab772b-8339-485b-8256-a41a106ad6ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Card/hearts_jacks.png" beforeDir="false" afterPath="$PROJECT_DIR$/Card/hearts_jack.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Card/joker_black.png" beforeDir="false" afterPath="$PROJECT_DIR$/Card/black_joker.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Card/joker_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/Card/red_joker.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlackJack/CardFunctionality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/CardFunctionality.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlackJack/CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/CardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/HandView.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardFunctionality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,12 +99,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CardFunctionality.java</url>
-          <line>143</line>
+          <line>125</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CardView.java</url>
-          <line>67</line>
+          <line>66</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

@@ -59,14 +59,12 @@ public class CardView {
                 break;
         }
 
-
         // create image
         ImageIcon newCard = new ImageIcon("Card/" + imageName);
         cardDisplay = new JLabel("");
         cardDisplay.setIcon(newCard);
         cardDisplay.setBounds(positionX, positiony, 72, 96);
         GUI.playView.background.add(cardDisplay);
-
 
     }
 }
