@@ -75,8 +75,34 @@ public class CardFunctionality {
 
     void determineWinner() {
 
-        //
+        int winner;
+
+        if (totalL > 21 && CardView.hasAceL) {
+            totalL -= 10;       // ace was worth 11 now is worth 1
+            PlayView.scoreLabelL.setText("Score: " + totalL);
+        } else if (totalR > 21 && CardView.hasAceR) {
+            totalR -= 10;       // ace was worth 11 now is worth 1
+            PlayView.scoreLabelR.setText("Score: " + totalR);
+        } else if (totalM > 21 && CardView.hasAceM) {
+            totalM -= 10;       // ace was worth 11 now is worth 1
+            PlayView.scoreLabelM.setText("Score: " + totalM);
+        }
+
+        int[] winnersScores;
+        if (PlayView.numberOfPlayers == 2) {
+            winnersScores = new int[] {totalL, totalM};
+        } else {
+            winnersScores = new int[] {totalL, totalR, totalM};
+        }
+
+        for (int i = 0; i < winnersScores.length; i ++) {
+
+        }
+
+
+
     }
+
     void createCard(String cardName, int side) {
 
         int sideInt;

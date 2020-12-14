@@ -8,10 +8,9 @@ public class CardView {
 
     int value;
 
-    boolean hasAceL = false;
-    boolean hasAceR = false;
-    boolean hasAceM = false;
-
+    public static boolean hasAceL = false;
+    public static boolean hasAceR = false;
+    public static boolean hasAceM = false;
 
     JLabel cardDisplay;
 //    PlayView playView = new PlayView();

@@ -38,6 +38,10 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainMenuView.singlePlayerButton) {
 
+            // set number of players to 2
+            PlayView.numberOfPlayers = 2;
+
+            // swap panels
             mainPanel = playView.retrievePanel();
             frame.setContentPane(mainPanel);
             mainPanel.revalidate();
@@ -47,6 +51,8 @@ public class GUI implements ActionListener {
             String bet = JOptionPane.showInputDialog(mainPanel, "What is your bet in dollars? (Ex.: 50)?", "Don't be a cheapskate!", JOptionPane.QUESTION_MESSAGE);
             inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + inputBet);
+
+
         }
         else if (e.getSource() == playView.hitButton) {
             cardFunctionality.hit();

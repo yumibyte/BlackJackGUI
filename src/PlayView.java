@@ -14,6 +14,10 @@ public class PlayView {
     public static JLabel scoreLabelL;
     public static JLabel scoreLabelR;
     public static JLabel scoreLabelM;      // dealer
+
+    // number of players, used when checking winners in CardFunctionality
+    public static int numberOfPlayers = 0;
+
     PlayView() {
         playViewPanel = new JPanel();
         background = new JLabel();
