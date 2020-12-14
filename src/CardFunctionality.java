@@ -9,6 +9,16 @@ import java.util.Random;
 public class CardFunctionality {
     ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
 
+    // used for setting position, needs to be incremented ea. time
+    int positionXl = 462;      // increment through positions provided, 2 each
+    int positionyl = 455;      // set in exact middle
+
+    int positionXr = 500;
+    int positionyr = 470;
+
+    int positionXm = 500;       // set at top middle
+    int positionym = 100;
+
     // handViewList contains the number of cards for this one user. Main contains all user's hands
     public static CardView[][] usersHandsList = new CardView[3][5];
 
@@ -57,30 +67,42 @@ public class CardFunctionality {
 
     void createCard(String cardName, char side) {
 
-        int positionX = 0;      // increment through positions provided, 2 each
-        int positiony = 0;
         int sideInt;
+        int positionX;
+        int positiony;
+
+
+
 
         switch(side) {
+
+            // 1000 x 760 is the frame size
             case 'l':       // left
-                positionX = 20;
-                positiony = 100;
+                positionX = positionXl;
+                positiony = positionyl;
+
+                positionXl += 15;
                 sideInt = 0;
                 break;
             case 'r':       // right
-                positionX = 20;
-                positiony = 40;
+                positionX = positionXr;
+                positiony = positionyr;
+
+                positionXr += 15;
                 sideInt = 1;
                 break;
             case 'm':        // middle or dealer
-                positionX = 20;
-                positiony = 60;
+                positionX = positionXm;
+                positiony = positionym;
+
+                positionXm += 15;
                 sideInt = 2;
 
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + side);
         }
+
 
         CardView[] cardList = usersHandsList[sideInt];
 
