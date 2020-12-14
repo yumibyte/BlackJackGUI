@@ -16,8 +16,8 @@ public class CardFunctionality {
     int positionXr = 730;
     int positionyr = 420;
 
-    int positionXm = 500;       // set at top middle
-    int positionym = 100;
+    int positionXm = 462;       // set at top middle
+    int positionym = 50;
 
     // handViewList contains the number of cards for this one user. Main contains all user's hands
     public static CardView[][] usersHandsList = new CardView[3][5];
@@ -52,7 +52,7 @@ public class CardFunctionality {
             if (usersHandsList[userNum][i] == null) {
                 String newCardName = mainCards.get(int_random);
 
-                createCard(newCardName, 'r');
+                createCard(newCardName, 'm');
                 break;
             } else if (i == 4 && usersHandsList[userNum][4] != null) {
                 // apply functionality for winning because the user has filled the entire deck already and has won
