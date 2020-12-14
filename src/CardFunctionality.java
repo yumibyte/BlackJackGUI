@@ -89,6 +89,9 @@ public class CardFunctionality {
                 }
             }
         }
+        PlayView.scoreL.setText(Integer.toString(totalScoreL));
+        PlayView.scoreR.setText(Integer.toString(totalScoreR));
+        PlayView.scoreM.setText(Integer.toString(totalScoreM));
 
 
     }

@@ -24,8 +24,11 @@ public class CardView {
         this.positiony = positiony;
 
         // associate value
-        String[] cardStringContents = imageName.substring(-4).split("_");
+        String[] cardStringContents = imageName.substring(0, imageName.length() - 4).split("_");
 
+        for (int i = 0; i < cardStringContents.length; i ++) {
+            System.out.println(cardStringContents[i]);
+        }
         switch (cardStringContents[1]) {
 
             case "ace":
@@ -47,7 +50,7 @@ public class CardView {
                 }
                 break;
 
-            case "jack": case "king": case "queen":
+            case "jack": case "king": case "queen": case "joker":
                 value = 10;
                 break;
 
