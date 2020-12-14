@@ -94,15 +94,47 @@ public class CardFunctionality {
         } else {
             winnersScores = new int[] {totalL, totalR, totalM};
         }
-
-        for (int i = 0; i < winnersScores.length; i ++) {
-
+        ArrayList<Integer> sortedWinnersScores = new ArrayList<Integer>();
+        for (int player = 0; player < PlayView.numberOfPlayers; player ++) {
+            sortedWinnersScores.add(winnersScores[player]);
         }
 
+        Collections.sort(sortedWinnersScores);
+        Collections.reverse(sortedWinnersScores);
 
+        int finalWinner = -1;
 
+        for (int player = 0; player < sortedWinnersScores.size(); player ++) {
+            if (winnersScores[player] == sortedWinnersScores.get(0)) {
+                finalWinner = player;
+            }
+        }
+        System.out.println(finalWinner);
     }
 
+//    void sortLeastToGreatest(int[] arr) {
+//        // Auxiliary array to hold modified array
+//        int temp[] = arr.clone();
+//        int n = arr.length;
+//
+//        // Indexes of smallest and largest elements
+//        // from remaining array.
+//        int small = 0, large = n - 1;
+//
+//        // To indicate whether we need to copy rmaining
+//        // largest or remaining smallest at next position
+//        boolean flag = true;
+//
+//        // Store result in temp[]
+//        for (int i = 0; i < n; i++) {
+//            if (flag)
+//                arr[i] = temp[large--];
+//            else
+//                arr[i] = temp[small++];
+//
+//            flag = !flag;
+//        }
+//    }
     void createCard(String cardName, int side) {
 
         int sideInt;
