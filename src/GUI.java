@@ -56,6 +56,5 @@ public class GUI implements ActionListener {
         else if (e.getSource() == playView.standButton) {
             cardFunctionality.stand();
         }
-
     }
 }

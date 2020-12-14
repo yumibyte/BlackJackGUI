@@ -9,6 +9,7 @@ import java.util.Random;
 public class CardFunctionality {
     ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
 
+    int currentSide = 0;        // start on the left
     // used for setting position, needs to be incremented ea. time
     int positionXl = 462;      // increment through positions provided, 2 each
     int positionyl = 455;      // set in exact middle
@@ -26,9 +27,6 @@ public class CardFunctionality {
         File folder = new File("Card/");
         File[] listOfFiles = folder.listFiles();
 
-//        for (int h = 0; h < 55; h ++) {
-//            mainCards.add(null);
-//        }
         for(int i = 0; i < 55; i ++) {
             assert listOfFiles != null;
             mainCards.add(listOfFiles[i].getName());
@@ -52,46 +50,57 @@ public class CardFunctionality {
             if (usersHandsList[userNum][i] == null) {
                 String newCardName = mainCards.get(int_random);
 
-                createCard(newCardName, 'm');
+                createCard(newCardName, currentSide);
                 break;
             } else if (i == 4 && usersHandsList[userNum][4] != null) {
                 // apply functionality for winning because the user has filled the entire deck already and has won
-
             }
         }
     }
 
     void stand() {
-
+        if (currentSide != 2) {     // if we're on the dealer's cards and they finish by standing, finalize the results
+            currentSide += 1;
+        } else {
+            determineWinner();
+        }
     }
 
-    void createCard(String cardName, char side) {
+    void determineWinner() {
+
+        int totalScoreL = 0;
+        int totalScoreR = 0;
+        int totalScoreM = 0;
+
+        for (int player = 0; player < 3; player ++) {
+            for (int card = 0; card < usersHandsList[player].length; card ++) {
+                usersHandsList[player][card].
+            }
+        }
+    }
+    void createCard(String cardName, int side) {
 
         int sideInt;
         int positionX;
         int positiony;
 
-
-
-
         switch(side) {
-
             // 1000 x 760 is the frame size
-            case 'l':       // left
+            case 0:       // left
                 positionX = positionXl;
                 positiony = positionyl;
 
                 positionXl += 15;
                 sideInt = 0;
                 break;
-            case 'r':       // right
+            case 1:       // right
                 positionX = positionXr;
                 positiony = positionyr;
 
                 positionXr += 15;
                 sideInt = 1;
                 break;
-            case 'm':        // middle or dealer
+            case 2:        // middle or dealer
                 positionX = positionXm;
                 positiony = positionym;
 
