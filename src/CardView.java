@@ -11,13 +11,19 @@ public class CardView {
 
 
     CardView(int positionX, int positiony, String imageName) {
+
+        // locate position
         this.positionX = positionX;
         this.positiony = positiony;
+
+        // create image
         ImageIcon newCard = new ImageIcon("Card/" + imageName);
         cardDisplay = new JLabel("");
         cardDisplay.setIcon(newCard);
         cardDisplay.setBounds(positionX, positiony, 72, 96);
         GUI.playView.background.add(cardDisplay);
+
+        // associate value
 
     }
 }
