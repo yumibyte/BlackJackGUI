@@ -3,20 +3,10 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 public class CardFunctionality {
     ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
-
-    // handViewList contains the number of cards for this one user. Main contains all user's hands
-    public static CardView[][] usersHandsList = new CardView[3][5];
-    public static int currentSide = 0;        // start on the left      // needs to be accessed in CardView
-
-    // total values for each hand
-    public static int totalL = 0;
-    public static int totalR = 0;
-    public static int totalM = 0;
 
     // used for setting position, needs to be incremented ea. time
     int positionXl = 462;      // increment through positions provided, 2 each
@@ -53,21 +43,21 @@ public class CardFunctionality {
         int int_random = rand.nextInt(upperBound);
         // left = 0, mid = 1, right = 2
 
-        for (int i = 0; i < usersHandsList[userNum].length; i ++) {
-            if (usersHandsList[userNum][i] == null) {
+        for (int i = 0; i < PlayView.usersHandsList[userNum].length; i ++) {
+            if (PlayView.usersHandsList[userNum][i] == null) {
                 String newCardName = mainCards.get(int_random);
 
-                createCard(newCardName, currentSide);
+                createCard(newCardName, PlayView.currentSide);
                 break;
-            } else if (i == 4 && usersHandsList[userNum][4] != null) {
+            } else if (i == 4 && PlayView.usersHandsList[userNum][4] != null) {
                 // apply functionality for winning because the user has filled the entire deck already and has won
             }
         }
     }
 
     void stand() {
-        if (currentSide != 2) {     // if we're on the dealer's cards and they finish by standing, finalize the results
-            currentSide += 1;
+        if (PlayView.currentSide != 2) {     // if we're on the dealer's cards and they finish by standing, finalize the results
+            PlayView.currentSide += 1;
         } else {
             determineWinner();
         }
@@ -75,25 +65,21 @@ public class CardFunctionality {
 
     void determineWinner() {
 
-        int winner;
-
-        if (totalL > 21 && CardView.hasAceL) {
-            totalL -= 10;       // ace was worth 11 now is worth 1
-            PlayView.scoreLabelL.setText("Score: " + totalL);
-        } else if (totalR > 21 && CardView.hasAceR) {
-            totalR -= 10;       // ace was worth 11 now is worth 1
-            PlayView.scoreLabelR.setText("Score: " + totalR);
-        } else if (totalM > 21 && CardView.hasAceM) {
-            totalM -= 10;       // ace was worth 11 now is worth 1
-            PlayView.scoreLabelM.setText("Score: " + totalM);
-        }
-
         int[] winnersScores;
         if (PlayView.numberOfPlayers == 2) {
-            winnersScores = new int[] {totalL, totalM};
+            winnersScores = new int[] {PlayView.totalL, PlayView.totalM};
         } else {
-            winnersScores = new int[] {totalL, totalR, totalM};
+            winnersScores = new int[] {PlayView.totalL, PlayView.totalR, PlayView.totalM};
         }
+        for (int i = 0; i < PlayView.numberOfPlayers; i ++) {
+            if (PlayView.hasLost[i] == true) {
+                for (int j = i; j < winnersScores.length - 1; j++) {
+                    winnersScores[j] = winnersScores[j + 1];
+                }
+            }
+        }
+
+        // use an arrayList so collections can be used to sort the winners
         ArrayList<Integer> sortedWinnersScores = new ArrayList<Integer>();
         for (int player = 0; player < PlayView.numberOfPlayers; player ++) {
             sortedWinnersScores.add(winnersScores[player]);
@@ -104,37 +90,20 @@ public class CardFunctionality {
 
         int finalWinner = -1;
 
+        // find which player corresponds to the highest number
         for (int player = 0; player < sortedWinnersScores.size(); player ++) {
             if (winnersScores[player] == sortedWinnersScores.get(0)) {
                 finalWinner = player;
             }
         }
         System.out.println(finalWinner);
+
+        resetGame();
     }
 
-//    void sortLeastToGreatest(int[] arr) {
-//        // Auxiliary array to hold modified array
-//        int temp[] = arr.clone();
-//        int n = arr.length;
-//
-//        // Indexes of smallest and largest elements
-//        // from remaining array.
-//        int small = 0, large = n - 1;
-//
-//        // To indicate whether we need to copy rmaining
-//        // largest or remaining smallest at next position
-//        boolean flag = true;
-//
-//        // Store result in temp[]
-//        for (int i = 0; i < n; i++) {
-//            if (flag)
-//                arr[i] = temp[large--];
-//            else
-//                arr[i] = temp[small++];
-//
-//            flag = !flag;
-//        }
-//    }
+    void resetGame() {
+
+    }
     void createCard(String cardName, int side) {
 
         int sideInt;
@@ -170,7 +139,7 @@ public class CardFunctionality {
         }
 
 
-        CardView[] cardList = usersHandsList[sideInt];
+        CardView[] cardList = PlayView.usersHandsList[sideInt];
 
         // count number of cards in hand
         int cardsInHandLength = 0;
@@ -181,37 +150,57 @@ public class CardFunctionality {
         CardView newCard = new CardView(positionX, positiony, cardName);
         cardList[cardsInHandLength + 1] = newCard;      // make next card the new card
 
-        usersHandsList[sideInt] = cardList;      // set all hands at the position with the modified list
+        PlayView.usersHandsList[sideInt] = cardList;      // set all hands at the position with the modified list
 
         switch (side) {
             case 0:
-                totalL += newCard.value;
+                PlayView.totalL += newCard.value;
 
-                if (totalL > 21) {
-                    PlayView.scoreLabelL.setText("BUST!");
-                    stand();
+                if (PlayView.totalL > 21) {
+                    // convert to 1 for ace if the person "busts"
+                    if (PlayView.hasAceL) {
+                        PlayView.totalR -= 10;       // ace was worth 11 now is worth 1
+                        PlayView.scoreLabelL.setText("Score: " + PlayView.totalL);
+                    } else {
+                        PlayView.scoreLabelL.setText("BUST!");
+                        PlayView.hasLost[0] = true;
+                        stand();
+                    }
                 } else {
-                    PlayView.scoreLabelL.setText("Score: " + totalL);
+                    PlayView.scoreLabelL.setText("Score: " + PlayView.totalL);
                 }
                 break;
             case 1:
-                totalR += newCard.value;
+                PlayView.totalR += newCard.value;
 
-                if (totalR > 21) {
-                    PlayView.scoreLabelR.setText("BUST!");
-                    stand();
+                if (PlayView.totalR > 21) {
+                    if (PlayView.hasAceR) {
+                        PlayView.totalR -= 10;       // ace was worth 11 now is worth 1
+                        PlayView.scoreLabelR.setText("Score: " + PlayView.totalR);
+                    } else {
+                        PlayView.scoreLabelR.setText("BUST!");
+                        PlayView.numberOfPlayers -= 1;
+                        PlayView.hasLost[1] = true;
+                        stand();
+                    }
                 } else {
-                    PlayView.scoreLabelR.setText("Score: " + totalR);
+                    PlayView.scoreLabelR.setText("Score: " + PlayView.totalR);
                 }
                 break;
             case 2:
-                totalM += newCard.value;
+                PlayView.totalM += newCard.value;
 
-                if (totalM > 21) {
-                    PlayView.scoreLabelM.setText("BUST!");
-                    stand();
+                if (PlayView.totalM > 21) {
+                    if (PlayView.hasAceM) {
+                        PlayView.totalM -= 10;       // ace was worth 11 now is worth 1
+                        PlayView.scoreLabelM.setText("Score: " + PlayView.totalM);
+                    } else {
+                        PlayView.scoreLabelM.setText("BUST!");
+                        PlayView.hasLost[2] = true;
+                        stand();
+                    }
                 } else {
-                    PlayView.scoreLabelM.setText("Score: " + totalM);
+                    PlayView.scoreLabelM.setText("Score: " + PlayView.totalM);
                 }
                 break;
         }

@@ -18,6 +18,23 @@ public class PlayView {
     // number of players, used when checking winners in CardFunctionality
     public static int numberOfPlayers = 0;
 
+    // total values for each hand
+    public static int totalL = 0;
+    public static int totalR = 0;
+    public static int totalM = 0;
+
+    public static boolean[] hasLost = {false, false, false};
+
+    public static CardView[][] usersHandsList = new CardView[3][5];
+    public static int currentSide = 0;        // start on the left      // needs to be accessed in CardView
+
+    public static boolean hasAceL = false;
+    public static boolean hasAceR = false;
+    public static boolean hasAceM = false;
+
+    public static double inputBet;
+
+
     PlayView() {
         playViewPanel = new JPanel();
         background = new JLabel();
