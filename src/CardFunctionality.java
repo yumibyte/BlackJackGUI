@@ -28,7 +28,7 @@ public class CardFunctionality {
         File folder = new File("Card/");
         File[] listOfFiles = folder.listFiles();
 
-        for(int i = 0; i < 55; i ++) {
+        for(int i = 0; i < 54; i ++) {
             assert listOfFiles != null;
             mainCards.add(listOfFiles[i].getName());
         }
