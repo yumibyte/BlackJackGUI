@@ -13,8 +13,8 @@ public class CardFunctionality {
     int positionXl = 462;      // increment through positions provided, 2 each
     int positionyl = 455;      // set in exact middle
 
-    int positionXr = 500;
-    int positionyr = 470;
+    int positionXr = 730;
+    int positionyr = 420;
 
     int positionXm = 500;       // set at top middle
     int positionym = 100;
@@ -52,7 +52,7 @@ public class CardFunctionality {
             if (usersHandsList[userNum][i] == null) {
                 String newCardName = mainCards.get(int_random);
 
-                createCard(newCardName, 'l');
+                createCard(newCardName, 'r');
                 break;
             } else if (i == 4 && usersHandsList[userNum][4] != null) {
                 // apply functionality for winning because the user has filled the entire deck already and has won
