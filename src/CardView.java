@@ -8,10 +8,9 @@ public class CardView {
 
     int value;
 
-    boolean hasAceL = false;
-    boolean hasAceR = false;
-    boolean hasAceM = false;
-
+    public static boolean hasAceL = false;
+    public static boolean hasAceR = false;
+    public static boolean hasAceM = false;
 
     JLabel cardDisplay;
 //    PlayView playView = new PlayView();
@@ -59,14 +58,12 @@ public class CardView {
                 break;
         }
 
-
         // create image
         ImageIcon newCard = new ImageIcon("Card/" + imageName);
         cardDisplay = new JLabel("");
         cardDisplay.setIcon(newCard);
         cardDisplay.setBounds(positionX, positiony, 72, 96);
         GUI.playView.background.add(cardDisplay);
-
 
     }
 }

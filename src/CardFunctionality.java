@@ -12,6 +12,12 @@ public class CardFunctionality {
     // handViewList contains the number of cards for this one user. Main contains all user's hands
     public static CardView[][] usersHandsList = new CardView[3][5];
     public static int currentSide = 0;        // start on the left      // needs to be accessed in CardView
+
+    // total values for each hand
+    public static int totalL = 0;
+    public static int totalR = 0;
+    public static int totalM = 0;
+
     // used for setting position, needs to be incremented ea. time
     int positionXl = 462;      // increment through positions provided, 2 each
     int positionyl = 455;      // set in exact middle
@@ -45,7 +51,7 @@ public class CardFunctionality {
         int upperBound = 53;        // arrays start at 0
         //generate random values from 0-53
         int int_random = rand.nextInt(upperBound);
-        // left = 1, mid = 2, right = 3
+        // left = 0, mid = 1, right = 2
 
         for (int i = 0; i < usersHandsList[userNum].length; i ++) {
             if (usersHandsList[userNum][i] == null) {
@@ -69,32 +75,66 @@ public class CardFunctionality {
 
     void determineWinner() {
 
-        int totalScoreL = 0;
-        int totalScoreR = 0;
-        int totalScoreM = 0;
+        int winner;
 
-        for (int player = 0; player < 3; player ++) {
-            for (int card = 0; card < usersHandsList[player].length; card ++) {
+        if (totalL > 21 && CardView.hasAceL) {
+            totalL -= 10;       // ace was worth 11 now is worth 1
+            PlayView.scoreLabelL.setText("Score: " + totalL);
+        } else if (totalR > 21 && CardView.hasAceR) {
+            totalR -= 10;       // ace was worth 11 now is worth 1
+            PlayView.scoreLabelR.setText("Score: " + totalR);
+        } else if (totalM > 21 && CardView.hasAceM) {
+            totalM -= 10;       // ace was worth 11 now is worth 1
+            PlayView.scoreLabelM.setText("Score: " + totalM);
+        }
 
-                switch (player) {
-                    case 0:
-                        totalScoreL += usersHandsList[player][card].value;
-                        break;
-                    case 1:
-                        totalScoreR += usersHandsList[player][card].value;
-                        break;
-                    case 2:
-                        totalScoreM+= usersHandsList[player][card].value;
-                        break;
-                }
+        int[] winnersScores;
+        if (PlayView.numberOfPlayers == 2) {
+            winnersScores = new int[] {totalL, totalM};
+        } else {
+            winnersScores = new int[] {totalL, totalR, totalM};
+        }
+        ArrayList<Integer> sortedWinnersScores = new ArrayList<Integer>();
+        for (int player = 0; player < PlayView.numberOfPlayers; player ++) {
+            sortedWinnersScores.add(winnersScores[player]);
+        }
+
+        Collections.sort(sortedWinnersScores);
+        Collections.reverse(sortedWinnersScores);
+
+        int finalWinner = -1;
+
+        for (int player = 0; player < sortedWinnersScores.size(); player ++) {
+            if (winnersScores[player] == sortedWinnersScores.get(0)) {
+                finalWinner = player;
             }
         }
-        PlayView.scoreL.setText(Integer.toString(totalScoreL));
-        PlayView.scoreR.setText(Integer.toString(totalScoreR));
-        PlayView.scoreM.setText(Integer.toString(totalScoreM));
-
-
+        System.out.println(finalWinner);
     }
+
+//    void sortLeastToGreatest(int[] arr) {
+//        // Auxiliary array to hold modified array
+//        int temp[] = arr.clone();
+//        int n = arr.length;
+//
+//        // Indexes of smallest and largest elements
+//        // from remaining array.
+//        int small = 0, large = n - 1;
+//
+//        // To indicate whether we need to copy rmaining
+//        // largest or remaining smallest at next position
+//        boolean flag = true;
+//
+//        // Store result in temp[]
+//        for (int i = 0; i < n; i++) {
+//            if (flag)
+//                arr[i] = temp[large--];
+//            else
+//                arr[i] = temp[small++];
+//
+//            flag = !flag;
+//        }
+//    }
     void createCard(String cardName, int side) {
 
         int sideInt;
@@ -142,5 +182,39 @@ public class CardFunctionality {
         cardList[cardsInHandLength + 1] = newCard;      // make next card the new card
 
         usersHandsList[sideInt] = cardList;      // set all hands at the position with the modified list
+
+        switch (side) {
+            case 0:
+                totalL += newCard.value;
+
+                if (totalL > 21) {
+                    PlayView.scoreLabelL.setText("BUST!");
+                    stand();
+                } else {
+                    PlayView.scoreLabelL.setText("Score: " + totalL);
+                }
+                break;
+            case 1:
+                totalR += newCard.value;
+
+                if (totalR > 21) {
+                    PlayView.scoreLabelR.setText("BUST!");
+                    stand();
+                } else {
+                    PlayView.scoreLabelR.setText("Score: " + totalR);
+                }
+                break;
+            case 2:
+                totalM += newCard.value;
+
+                if (totalM > 21) {
+                    PlayView.scoreLabelM.setText("BUST!");
+                    stand();
+                } else {
+                    PlayView.scoreLabelM.setText("Score: " + totalM);
+                }
+                break;
+        }
+
     }
 }

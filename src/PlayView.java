@@ -11,9 +11,13 @@ public class PlayView {
 
     // score labels w/ total points
     // use public static so they are set in CardFunctionality
-    public static JLabel scoreL;
-    public static JLabel scoreR;
-    public static JLabel scoreM;      // dealer
+    public static JLabel scoreLabelL;
+    public static JLabel scoreLabelR;
+    public static JLabel scoreLabelM;      // dealer
+
+    // number of players, used when checking winners in CardFunctionality
+    public static int numberOfPlayers = 0;
+
     PlayView() {
         playViewPanel = new JPanel();
         background = new JLabel();
@@ -38,20 +42,20 @@ public class PlayView {
         betLabel.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 20));
         background.add(betLabel);
 
-        scoreL = new JLabel("Score: 0");
-        scoreL.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        scoreL.setBounds(462, 410, 100, 50);
-        background.add(scoreL);
+        scoreLabelL = new JLabel("Score: 0");
+        scoreLabelL.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        scoreLabelL.setBounds(462, 410, 100, 50);
+        background.add(scoreLabelL);
 
-        scoreM = new JLabel("Score: 0");
-        scoreM.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        scoreM.setBounds(710, 370, 100, 50);
-        background.add(scoreM);
+        scoreLabelR = new JLabel("Score: 0");
+        scoreLabelR.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        scoreLabelR.setBounds(710, 370, 100, 50);
+        background.add(scoreLabelR);
 
-        scoreR = new JLabel("Score: 0");
-        scoreR.setFont(new Font("Helvetica", Font.PLAIN, 20));
-        scoreR.setBounds(462, 150, 100, 50);
-        background.add(scoreR);
+        scoreLabelM = new JLabel("Score: 0");
+        scoreLabelM.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        scoreLabelM.setBounds(462, 150, 100, 50);
+        background.add(scoreLabelM);
 
 
     }
