@@ -9,7 +9,9 @@ import java.util.Random;
 public class CardFunctionality {
     ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
 
-    int currentSide = 0;        // start on the left
+    // handViewList contains the number of cards for this one user. Main contains all user's hands
+    public static CardView[][] usersHandsList = new CardView[3][5];
+    public static int currentSide = 0;        // start on the left      // needs to be accessed in CardView
     // used for setting position, needs to be incremented ea. time
     int positionXl = 462;      // increment through positions provided, 2 each
     int positionyl = 455;      // set in exact middle
@@ -20,8 +22,7 @@ public class CardFunctionality {
     int positionXm = 462;       // set at top middle
     int positionym = 50;
 
-    // handViewList contains the number of cards for this one user. Main contains all user's hands
-    public static CardView[][] usersHandsList = new CardView[3][5];
+
 
     void retrieveNewDeck() {
         File folder = new File("Card/");
@@ -74,7 +75,7 @@ public class CardFunctionality {
 
         for (int player = 0; player < 3; player ++) {
             for (int card = 0; card < usersHandsList[player].length; card ++) {
-                usersHandsList[player][card].
+                usersHandsList[player][card].//
             }
         }
     }
