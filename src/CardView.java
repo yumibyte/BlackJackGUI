@@ -8,7 +8,7 @@ public class CardView {
     int value;
 
     JLabel cardDisplay;
-
+    PlayView playView = GUI.playView;
 
     CardView(int positionX, int positiony, String imageName) {
 
@@ -26,19 +26,19 @@ public class CardView {
 
             case "ace":
                 value = 11;
-                int currentSide = PlayView.currentSide;
+                int currentSide = playView.currentSide;
 
                 // nested case to check if there's an ace
                 // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
                 switch (currentSide) {
                     case 0:
-                        PlayView.hasAceL = true;
+                        playView.hasAceL = true;
                         break;
                     case 1:
-                        PlayView.hasAceR = true;
+                        playView.hasAceR = true;
                         break;
                     case 2:
-                        PlayView.hasAceM = true;
+                        playView.hasAceM = true;
                         break;
                 }
                 break;

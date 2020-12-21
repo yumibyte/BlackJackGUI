@@ -22,14 +22,9 @@ public class MainMenuView {
         singlePlayerButton.setBounds(300, 275, 300, 50);
         singlePlayerButton.addActionListener(new GUI());
         menuPanel.add(singlePlayerButton);
-
-
     }
 
     JPanel retrievePanel() {
         return menuPanel;
-
-
     }
-
 }

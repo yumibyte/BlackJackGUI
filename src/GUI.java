@@ -41,7 +41,6 @@ public class GUI implements ActionListener {
             playView.inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + playView.inputBet);
 
-
         }
         else if (e.getSource() == playView.hitButton) {
             cardFunctionality.hit();
