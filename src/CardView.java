@@ -1,16 +1,16 @@
 import javax.swing.*;
 
 // this class should not be touched directly it's only used to initialize cards by HandView
-public class CardView {
+public class CardView extends CardFunctionality {
 
     int positionX;
     int positiony;
     int value;
     String cardName;
-
     JLabel cardDisplay;
 
     CardView(int positionX, int positiony, String imageName) {
+        // can be left without inheritance because this is an association
 
         // locate position
         this.positionX = positionX;
@@ -27,19 +27,18 @@ public class CardView {
 
             case "ace":
                 value = 11;
-                int currentSide = PlayView.currentSide;
 
                 // nested case to check if there's an ace
                 // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
                 switch (currentSide) {
                     case 0:
-                        PlayView.hasAceL = true;
+                        hasAceL = true;
                         break;
                     case 1:
-                        PlayView.hasAceR = true;
+                        hasAceR = true;
                         break;
                     case 2:
-                        PlayView.hasAceM = true;
+                        hasAceM = true;
                         break;
                 }
                 break;
@@ -55,7 +54,7 @@ public class CardView {
 
         ImageIcon newCard;
         // create image
-        if (PlayView.currentSide == 2 && PlayView.usersHandsList[2][0] == null) {        // if it's the dealer's first card
+        if (currentSide == 2 && usersHandsList[2][0] == null) {        // if it's the dealer's first card
             newCard = new ImageIcon("ExtraCards/" + "cardBack.png");
         } else {
             newCard = new ImageIcon("Card/" + imageName);

@@ -8,6 +8,7 @@ public class GUI implements ActionListener {
     public static MainMenuView mainMenuView = new MainMenuView();
     public static PlayView playView = new PlayView();
     public static CardFunctionality cardFunctionality = new CardFunctionality();
+//    public static CardFunctionality cardFunctionality = new CardFunctionality();
 
     public static void main(String[] args) {
 
@@ -28,10 +29,10 @@ public class GUI implements ActionListener {
         if (e.getSource() == mainMenuView.singlePlayerButton) {
 
             // set number of players to 2
-            PlayView.numberOfPlayers = 2;
+            playView.numberOfPlayers = 2;
 
             // swap panels
-            mainPanel = playView.retrievePanel();
+            mainPanel = playView.getPlayViewPanel();
             frame.setContentPane(mainPanel);
             mainPanel.revalidate();
 
@@ -41,12 +42,15 @@ public class GUI implements ActionListener {
             playView.inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + playView.inputBet);
 
-            GUI.cardFunctionality.setupCards();
+            cardFunctionality.setupCards(); // from cardFunctionality
+            playView.hasFinishedSettingUp = true;
+
 
         }
         else if (e.getSource() == playView.hitButton) {
-            cardFunctionality.hit();
-            PlayView.playViewPanel.revalidate();
+            cardFunctionality.hit();      // from cardFunctionality
+
+            playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         }
         else if (e.getSource() == playView.standButton) {

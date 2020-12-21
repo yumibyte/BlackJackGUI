@@ -4,39 +4,30 @@ import java.util.ArrayList;
 
 public class PlayView {
 
-    public static JPanel playViewPanel;
-    public static JLabel background;        // needs to be reset after so it's public
-    public static JButton hitButton;
-    public static JButton standButton;
-    public static JLabel betLabel;      // needs to be reset
+    public JPanel playViewPanel;
+    public JLabel background;        // needs to be reset after so it's public
+    public JButton hitButton;
+    public JButton standButton;
+    public JLabel betLabel;      // needs to be reset
 
     // score labels w/ total points
     // use public static so they are set in CardFunctionality
-    public static JLabel scoreLabelL;
-    public static JLabel scoreLabelR;
-    public static JLabel scoreLabelM;      // dealer
+    public JLabel scoreLabelL;
+    public JLabel scoreLabelR;
+    public JLabel scoreLabelM;      // dealer
+    public double inputBet;
 
+    CardView[][] usersHandsList = new CardView[3][5];
     // number of players, used when checking winners in CardFunctionality
-    public static int numberOfPlayers = 0;
+    public int numberOfPlayers = 0;
+    public int currentSide = 0;        // start on the left
+    public boolean hasFinishedSettingUp = false;
 
     // total values for each hand
-    public static int totalL = 0;
-    public static int totalR = 0;
-    public static int totalM = 0;
-
-    public static boolean[] hasLost = {false, false, false};
-
-    public static CardView[][] usersHandsList = new CardView[3][5];
-    public static int currentSide = 0;        // start on the left      // needs to be accessed in CardView
-
-    public static boolean hasAceL = false;
-    public static boolean hasAceR = false;
-    public static boolean hasAceM = false;
-
-    public static double inputBet;
-    public static boolean hasFinishedSettingUp = false;
-
-
+    public int totalL = 0;
+    public int totalR = 0;
+    public int totalM = 0;
+    public boolean[] hasLost = {false, false, false};
 
     PlayView() {
         playViewPanel = new JPanel();
@@ -76,15 +67,9 @@ public class PlayView {
         scoreLabelM.setFont(new Font("Helvetica", Font.PLAIN, 20));
         scoreLabelM.setBounds(462, 150, 100, 50);
         background.add(scoreLabelM);
-
-
     }
 
-    JPanel retrievePanel() {
-        return playViewPanel;
-    }
-
-    static void resetGame() {
+//    static void resetGame() {
 //        scoreLabelL.setText("Score: 0");
 //        scoreLabelR.setText("Score: 0");
 //        scoreLabelM.setText("Score: 0");
@@ -106,8 +91,12 @@ public class PlayView {
 
 
         // used for setting position, needs to be incremented ea. time
-        GUI.cardFunctionality = new CardFunctionality();
-        GUI.playView = new PlayView();
+//        GUI.
+//        GUI.playView = new PlayView();
+//
+//    }
 
+    public JPanel getPlayViewPanel() {
+        return playViewPanel;
     }
 }
