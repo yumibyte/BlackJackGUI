@@ -6,6 +6,7 @@ public class CardView {
     int positionX;
     int positiony;
     int value;
+    String cardName;
 
     JLabel cardDisplay;
     PlayView playView = GUI.playView;
@@ -16,6 +17,7 @@ public class CardView {
         this.positionX = positionX;
         this.positiony = positiony;
 
+        cardName = imageName;       // set this so the dealer's first card can be recalled later
         // associate value
         String[] cardStringContents = imageName.substring(0, imageName.length() - 4).split("_");
 

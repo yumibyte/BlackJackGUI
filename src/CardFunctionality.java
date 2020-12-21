@@ -1,5 +1,6 @@
 //
 
+import javax.swing.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -81,6 +82,11 @@ public class CardFunctionality {
     }
 
     void determineWinner() {
+
+        // flip over dealers card that was hidden
+        CardView dealersHand = playView.usersHandsList[2][0];
+        dealersHand.cardDisplay.setIcon(new ImageIcon("Card/" + dealersHand.cardName));
+
 
         int[] winnersScores;
         if (playView.numberOfPlayers == 2) {
