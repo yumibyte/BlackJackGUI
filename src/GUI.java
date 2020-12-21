@@ -46,7 +46,7 @@ public class GUI implements ActionListener {
         }
         else if (e.getSource() == playView.hitButton) {
             cardFunctionality.hit();
-            playView.playViewPanel.revalidate();
+            PlayView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         }
         else if (e.getSource() == playView.standButton) {

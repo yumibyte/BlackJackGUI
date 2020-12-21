@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class PlayView {
 
-    JPanel playViewPanel;
+    public static JPanel playViewPanel;
     public static JLabel background;        // needs to be reset after so it's public
-    JButton hitButton;
-    JButton standButton;
+    public static JButton hitButton;
+    public static JButton standButton;
     public static JLabel betLabel;      // needs to be reset
 
     // score labels w/ total points
@@ -34,7 +34,7 @@ public class PlayView {
     public static boolean hasAceM = false;
 
     public static double inputBet;
-    boolean hasFinishedSettingUp = false;
+    public static boolean hasFinishedSettingUp = false;
 
 
 
@@ -93,7 +93,7 @@ public class PlayView {
 //        numberOfPlayers = 0;
 //
 //        hasLost = new boolean[]{false, false, false};
-// 
+//
 //        usersHandsList = new CardView[3][5];
 //        currentSide = 0;        // start on the left      // needs to be accessed in CardView
 //
