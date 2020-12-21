@@ -6,13 +6,10 @@ public class GUI implements ActionListener {
     public static JFrame frame;
     public static JPanel mainPanel;
     public static MainMenuView mainMenuView = new MainMenuView();
-    public static PlayView playView = new PlayView();
-    public static CardFunctionality cardFunctionality = new CardFunctionality();
+    public static PlayView.PlayViewGUI playView = new PlayView.PlayViewGUI();
 //    public static CardFunctionality cardFunctionality = new CardFunctionality();
 
     public static void main(String[] args) {
-
-        cardFunctionality.retrieveNewDeck();
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,19 +39,19 @@ public class GUI implements ActionListener {
             playView.inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + playView.inputBet);
 
-            cardFunctionality.setupCards(); // from cardFunctionality
+            playView.setupCards(); // from cardFunctionality
             playView.hasFinishedSettingUp = true;
 
 
         }
         else if (e.getSource() == playView.hitButton) {
-            cardFunctionality.hit();      // from cardFunctionality
+            playView.hit();      // from cardFunctionality
 
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         }
         else if (e.getSource() == playView.standButton) {
-            cardFunctionality.stand();
+            playView.stand();
         }
     }
 }
