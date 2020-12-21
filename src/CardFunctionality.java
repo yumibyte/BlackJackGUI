@@ -18,8 +18,6 @@ public class CardFunctionality {
     int positionXm = 462;       // set at top middle
     int positionym = 50;
 
-
-
     void retrieveNewDeck() {
         File folder = new File("Card/");
         File[] listOfFiles = folder.listFiles();
@@ -53,11 +51,33 @@ public class CardFunctionality {
         }
     }
 
+    void setupCards() {
+
+
+        for (int i = 0; i < playView.numberOfPlayers; i ++) {
+            hit();
+            playView.playViewPanel.revalidate();
+            playView.playViewPanel.repaint();
+            hit();
+            playView.playViewPanel.revalidate();
+            playView.playViewPanel.repaint();
+            stand();
+        }
+        playView.hasFinishedSettingUp = true;
+    }
+
     void stand() {
         if (playView.currentSide != 2) {     // if we're on the dealer's cards and they finish by standing, finalize the results
             playView.currentSide += 1;
+            if (playView.numberOfPlayers == 2 && playView.currentSide == 1) {       // if there's only two players, then skip the third side
+                playView.currentSide = 2;
+            }
         } else {
-            determineWinner();
+            if (playView.hasFinishedSettingUp) {
+                determineWinner();
+            } else {
+                playView.currentSide = 0;
+            }
         }
     }
 
@@ -128,7 +148,6 @@ public class CardFunctionality {
 
                 positionXm += 15;
                 sideInt = 2;
-
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + side);
@@ -200,6 +219,5 @@ public class CardFunctionality {
                 }
                 break;
         }
-
     }
 }
