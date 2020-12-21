@@ -34,6 +34,8 @@ public class PlayView {
     public static boolean hasAceM = false;
 
     public static double inputBet;
+    boolean hasFinishedSettingUp = false;
+
 
 
     PlayView() {
@@ -74,6 +76,7 @@ public class PlayView {
         scoreLabelM.setFont(new Font("Helvetica", Font.PLAIN, 20));
         scoreLabelM.setBounds(462, 150, 100, 50);
         background.add(scoreLabelM);
+
 
     }
 
