@@ -1,4 +1,3 @@
-//
 
 import javax.swing.*;
 import java.io.File;
@@ -7,6 +6,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class CardFunctionality extends PlayView {
+
     public static ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
     // used for setting position, needs to be incremented ea. time
     int positionXl = 462;      // increment through positions provided, 2 each
@@ -17,6 +17,13 @@ public class CardFunctionality extends PlayView {
 
     int positionXm = 462;       // set at top middle
     int positionym = 50;
+
+    public boolean hasAceL = false;
+    public boolean hasAceR = false;
+    public boolean hasAceM = false;
+
+    CardFunctionality() {
+    }
 
     static void retrieveNewDeck() {
         File folder = new File("Card/");
@@ -39,6 +46,8 @@ public class CardFunctionality extends PlayView {
         int int_random = rand.nextInt(upperBound);
         // left = 0, mid = 1, right = 2
 
+        // get usersHandsList
+
         for (int i = 0; i < usersHandsList[userNum].length; i ++) {
             if (usersHandsList[userNum][i] == null) {
                 String newCardName = mainCards.get(int_random);
@@ -55,14 +64,13 @@ public class CardFunctionality extends PlayView {
 
         for (int i = 0; i < numberOfPlayers; i ++) {       // for the number of players, set up 2 cards each.
             hit();
-            playViewPanel.revalidate();
-            playViewPanel.repaint();
+            GUI.playView.playViewPanel.revalidate();
+            GUI.playView.playViewPanel.repaint();
             hit();
-            playViewPanel.revalidate();
-            playViewPanel.repaint();
+            GUI.playView.playViewPanel.revalidate();
+            GUI.playView.playViewPanel.repaint();
             stand();
         }
-        hasFinishedSettingUp = true;
     }
 
     void stand() {
@@ -121,7 +129,7 @@ public class CardFunctionality extends PlayView {
         System.out.println(finalWinner);
 
         // performed in because that is where all the vars all
-        resetGame();
+//        resetGame();
     }
 
     void createCard(String cardName, int side) {
@@ -179,14 +187,14 @@ public class CardFunctionality extends PlayView {
                     // convert to 1 for ace if the person "busts"
                     if (hasAceL) {
                         totalR -= 10;       // ace was worth 11 now is worth 1
-                        scoreLabelL.setText("Score: " + totalL);
+                        GUI.playView.scoreLabelL.setText("Score: " + totalL);
                     } else {
-                        scoreLabelL.setText("BUST!");
+                        GUI.playView.scoreLabelL.setText("BUST!");
                         hasLost[0] = true;
                         stand();
                     }
                 } else {
-                    scoreLabelL.setText("Score: " + totalL);
+                    GUI.playView.scoreLabelL.setText("Score: " + totalL);
                 }
                 break;
             case 1:
@@ -195,15 +203,15 @@ public class CardFunctionality extends PlayView {
                 if (totalR > 21) {
                     if (hasAceR) {
                         totalR -= 10;       // ace was worth 11 now is worth 1
-                        scoreLabelR.setText("Score: " + totalR);
+                        GUI.playView.scoreLabelR.setText("Score: " + totalR);
                     } else {
-                        scoreLabelR.setText("BUST!");
+                        GUI.playView.scoreLabelR.setText("BUST!");
                         numberOfPlayers -= 1;
                         hasLost[1] = true;
                         stand();
                     }
                 } else {
-                    scoreLabelR.setText("Score: " + totalR);
+                    GUI.playView.scoreLabelR.setText("Score: " + totalR);
                 }
                 break;
             case 2:
@@ -212,14 +220,14 @@ public class CardFunctionality extends PlayView {
                 if (totalM > 21) {
                     if (hasAceM) {
                         totalM -= 10;       // ace was worth 11 now is worth 1
-                        scoreLabelM.setText("Score: " + totalM);
+                        GUI.playView.scoreLabelM.setText("Score: " + totalM);
                     } else {
-                        scoreLabelM.setText("BUST!");
+                        GUI.playView.scoreLabelM.setText("BUST!");
                         hasLost[2] = true;
                         stand();
                     }
                 } else {
-                    scoreLabelM.setText("Score: " + totalM);
+                    GUI.playView.scoreLabelM.setText("Score: " + totalM);
                 }
                 break;
         }

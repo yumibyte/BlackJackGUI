@@ -9,7 +9,8 @@ public class CardView extends CardFunctionality {
     String cardName;
     JLabel cardDisplay;
 
-    CardView(int positionX, int positiony, String imageName) {      // can be left without inheritance because this is an association
+    CardView(int positionX, int positiony, String imageName) {
+        // can be left without inheritance because this is an association
 
         // locate position
         this.positionX = positionX;
@@ -62,7 +63,7 @@ public class CardView extends CardFunctionality {
         cardDisplay = new JLabel("");
         cardDisplay.setIcon(newCard);
         cardDisplay.setBounds(positionX, positiony, 72, 96);
-        background.add(cardDisplay);
+        GUI.playView.background.add(cardDisplay);
 
     }
 }

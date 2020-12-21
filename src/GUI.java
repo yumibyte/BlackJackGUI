@@ -2,16 +2,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI extends CardFunctionality ActionListener {
+public class GUI implements ActionListener {
     public static JFrame frame;
     public static JPanel mainPanel;
     public static MainMenuView mainMenuView = new MainMenuView();
     public static PlayView playView = new PlayView();
+    public static CardFunctionality cardFunctionality = new CardFunctionality();
 //    public static CardFunctionality cardFunctionality = new CardFunctionality();
 
     public static void main(String[] args) {
 
-        retrieveNewDeck();
+        cardFunctionality.retrieveNewDeck();
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +32,7 @@ public class GUI extends CardFunctionality ActionListener {
             playView.numberOfPlayers = 2;
 
             // swap panels
-            mainPanel = playView.retrievePanel();
+            mainPanel = playView.getPlayViewPanel();
             frame.setContentPane(mainPanel);
             mainPanel.revalidate();
 
@@ -41,12 +42,15 @@ public class GUI extends CardFunctionality ActionListener {
             playView.inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + playView.inputBet);
 
-            setupCards(); // from cardFunctionality
+            cardFunctionality.setupCards(); // from cardFunctionality
+            playView.hasFinishedSettingUp = true;
+
 
         }
         else if (e.getSource() == playView.hitButton) {
-            hit();
-            PlayView.playViewPanel.revalidate();
+            cardFunctionality.hit();      // from cardFunctionality
+
+            playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         }
         else if (e.getSource() == playView.standButton) {

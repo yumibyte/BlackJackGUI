@@ -15,28 +15,19 @@ public class PlayView {
     public JLabel scoreLabelL;
     public JLabel scoreLabelR;
     public JLabel scoreLabelM;      // dealer
+    public double inputBet;
 
+    CardView[][] usersHandsList = new CardView[3][5];
     // number of players, used when checking winners in CardFunctionality
     public int numberOfPlayers = 0;
+    public int currentSide = 0;        // start on the left
+    public boolean hasFinishedSettingUp = false;
 
     // total values for each hand
     public int totalL = 0;
     public int totalR = 0;
     public int totalM = 0;
-
     public boolean[] hasLost = {false, false, false};
-
-    public CardView[][] usersHandsList = new CardView[3][5];
-    public int currentSide = 0;        // start on the left      // needs to be accessed in CardView
-
-    public boolean hasAceL = false;
-    public boolean hasAceR = false;
-    public boolean hasAceM = false;
-
-    public double inputBet;
-    public boolean hasFinishedSettingUp = false;
-
-
 
     PlayView() {
         playViewPanel = new JPanel();
@@ -76,11 +67,9 @@ public class PlayView {
         scoreLabelM.setFont(new Font("Helvetica", Font.PLAIN, 20));
         scoreLabelM.setBounds(462, 150, 100, 50);
         background.add(scoreLabelM);
-
-
     }
 
-    static void resetGame() {
+//    static void resetGame() {
 //        scoreLabelL.setText("Score: 0");
 //        scoreLabelR.setText("Score: 0");
 //        scoreLabelM.setText("Score: 0");
@@ -102,12 +91,12 @@ public class PlayView {
 
 
         // used for setting position, needs to be incremented ea. time
-        GUI.cardFunctionality = new CardFunctionality();
-        GUI.playView = new PlayView();
+//        GUI.
+//        GUI.playView = new PlayView();
+//
+//    }
 
-    }
-
-    public JPanel retrievePanel() {
+    public JPanel getPlayViewPanel() {
         return playViewPanel;
     }
 }
