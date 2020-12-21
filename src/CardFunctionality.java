@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class CardFunctionality extends PlayView {
-    ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
+    public static ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
     // used for setting position, needs to be incremented ea. time
     int positionXl = 462;      // increment through positions provided, 2 each
     int positionyl = 455;      // set in exact middle
@@ -18,7 +18,7 @@ public class CardFunctionality extends PlayView {
     int positionXm = 462;       // set at top middle
     int positionym = 50;
 
-    void retrieveNewDeck() {
+    static void retrieveNewDeck() {
         File folder = new File("Card/");
         File[] listOfFiles = folder.listFiles();
 

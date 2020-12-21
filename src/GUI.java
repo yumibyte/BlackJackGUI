@@ -2,16 +2,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI implements ActionListener {
+public class GUI extends CardFunctionality ActionListener {
     public static JFrame frame;
     public static JPanel mainPanel;
-//    public static MainMenuView mainMenuView = new MainMenuView();
-//    public static PlayView playView = new PlayView();
+    public static MainMenuView mainMenuView = new MainMenuView();
+    public static PlayView playView = new PlayView();
 //    public static CardFunctionality cardFunctionality = new CardFunctionality();
 
     public static void main(String[] args) {
 
-        cardFunctionality.retrieveNewDeck();
+        retrieveNewDeck();
 
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +28,7 @@ public class GUI implements ActionListener {
         if (e.getSource() == mainMenuView.singlePlayerButton) {
 
             // set number of players to 2
-            PlayView.numberOfPlayers = 2;
+            playView.numberOfPlayers = 2;
 
             // swap panels
             mainPanel = playView.retrievePanel();
@@ -41,11 +41,11 @@ public class GUI implements ActionListener {
             playView.inputBet = Integer.parseInt(bet);
             playView.betLabel.setText("My Bet: " + playView.inputBet);
 
-            GUI.cardFunctionality.setupCards();
+            setupCards(); // from cardFunctionality
 
         }
         else if (e.getSource() == playView.hitButton) {
-            cardFunctionality.hit();
+            hit();
             PlayView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         }

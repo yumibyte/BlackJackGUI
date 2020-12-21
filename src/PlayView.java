@@ -80,9 +80,6 @@ public class PlayView {
 
     }
 
-    JPanel retrievePanel() {
-        return playViewPanel;
-    }
     static void resetGame() {
 //        scoreLabelL.setText("Score: 0");
 //        scoreLabelR.setText("Score: 0");
@@ -108,5 +105,9 @@ public class PlayView {
         GUI.cardFunctionality = new CardFunctionality();
         GUI.playView = new PlayView();
 
+    }
+
+    public JPanel retrievePanel() {
+        return playViewPanel;
     }
 }
