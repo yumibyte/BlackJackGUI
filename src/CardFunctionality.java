@@ -34,8 +34,8 @@ public class CardFunctionality {
     void hit() {
         int userNum = 0;        // replace with global variable that will change each time
         Random rand = new Random(); //instance of random class
-        int upperBound = 53;        // arrays start at 0
-        //generate random values from 0-53
+        int upperBound = 51;        // arrays start at 0
+        //generate random values from 0-51
         int int_random = rand.nextInt(upperBound);
         // left = 0, mid = 1, right = 2
 
@@ -53,8 +53,7 @@ public class CardFunctionality {
 
     void setupCards() {
 
-
-        for (int i = 0; i < playView.numberOfPlayers; i ++) {
+        for (int i = 0; i < playView.numberOfPlayers; i ++) {       // for the number of players, set up 2 cards each.
             hit();
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
@@ -163,7 +162,7 @@ public class CardFunctionality {
         }
 
         CardView newCard = new CardView(positionX, positiony, cardName);
-        cardList[cardsInHandLength + 1] = newCard;      // make next card the new card
+        cardList[cardsInHandLength] = newCard;      // make next card the new card
 
         playView.usersHandsList[sideInt] = cardList;      // set all hands at the position with the modified list
 

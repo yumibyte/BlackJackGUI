@@ -52,8 +52,14 @@ public class CardView {
                 break;
         }
 
+        ImageIcon newCard;
         // create image
-        ImageIcon newCard = new ImageIcon("Card/" + imageName);
+        if (PlayView.currentSide == 2 && PlayView.usersHandsList[2][0] == null) {        // if it's the dealer's first card
+            newCard = new ImageIcon("ExtraCards/" + "cardBack.png");
+        } else {
+            newCard = new ImageIcon("Card/" + imageName);
+
+        }
         cardDisplay = new JLabel("");
         cardDisplay.setIcon(newCard);
         cardDisplay.setBounds(positionX, positiony, 72, 96);
