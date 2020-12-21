@@ -10,7 +10,7 @@ public class CardView {
 
     JLabel cardDisplay;
 
-    CardView(int positionX, int positiony, String imageName) {
+    CreateCardView(int positionX, int positiony, String imageName) {
 
         // locate position
         this.positionX = positionX;

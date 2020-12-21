@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 public class GUI implements ActionListener {
     public static JFrame frame;
     public static JPanel mainPanel;
-    public static MainMenuView mainMenuView = new MainMenuView();
-    public static PlayView playView = new PlayView();
-    public static CardFunctionality cardFunctionality = new CardFunctionality();
+//    public static MainMenuView mainMenuView = new MainMenuView();
+//    public static PlayView playView = new PlayView();
+//    public static CardFunctionality cardFunctionality = new CardFunctionality();
 
     public static void main(String[] args) {
 
