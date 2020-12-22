@@ -38,6 +38,7 @@ public class GUI implements ActionListener {
 
         playView.setupCards(); // from cardFunctionality
         playView.setHasFinishedSettingUp(true);
+        playView.currentSide = 0;
     }
 
     public static void resetGame() {        // static method because it's called from static classes
@@ -83,6 +84,8 @@ public class GUI implements ActionListener {
             playView.playViewPanel.repaint();
         }
         else if (e.getSource() == playView.standButton) {
+            playView.stand();
+            playView.hasFinishedPlayersTurn = true;
             playView.stand();
         }
     }

@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ab772b-8339-485b-8256-a41a106ad6ab" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$PlayViewGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$PlayViewGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,16 +99,39 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>331</line>
+          <line>338</line>
           <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>144</line>
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>141</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>132</line>
+          <properties class="PlayView.CardFunctionality" method="stand">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="160" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="winnersScores" language="JAVA" />
-        <watch expression="scores" language="JAVA" />
-        <watch expression="hasAces" language="JAVA" />
+        <watch expression="hasFinishedDealersTurn" language="JAVA" />
+        <watch expression="hasFinishedPlayersTurn" language="JAVA" />
+        <watch expression="hasFinishedSettingUp" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

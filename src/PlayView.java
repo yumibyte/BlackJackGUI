@@ -32,10 +32,13 @@ public class PlayView {
         private int positionym;
 
         public static boolean[] hasAces;
+        public boolean hasFinishedDealersTurn;
+        public boolean hasFinishedPlayersTurn;
 
         CardFunctionality() {
 
             // setup all variables
+            hasFinishedDealersTurn = false;
             usersHandsList = new CardView[3][5];
             numberOfPlayers = 0;
             currentSide = 0;
@@ -93,7 +96,7 @@ public class PlayView {
         }
 
         void hit() {
-            int userNum = 0;        // replace with global variable that will change each time
+//            int userNum = 0;        // replace with global variable that will change each time
             Random rand = new Random(); //instance of random class
             int upperBound = 51;        // arrays start at 0
             //generate random values from 0-51
@@ -102,14 +105,13 @@ public class PlayView {
 
             // get usersHandsList
 
-
-            for (int i = 0; i < usersHandsList[userNum].length; i ++) {
-                if (usersHandsList[userNum][i] == null) {
+            for (int i = 0; i < usersHandsList[currentSide].length; i ++) {
+                if (usersHandsList[currentSide][i] == null) {
                     String newCardName = mainCards.get(int_random);
 
                     createCard(newCardName, currentSide);
                     break;
-                } else if (i == 4 && usersHandsList[userNum][4] != null) {
+                } else if (i == 4 && usersHandsList[currentSide][4] != null) {
                     // apply functionality for winning because the user has filled the entire deck already and has won
                 }
             }
@@ -135,12 +137,19 @@ public class PlayView {
                     currentSide = 2;
                 }
             } else {
-                if (hasFinishedSettingUp) {
+                if (hasFinishedSettingUp && hasFinishedDealersTurn) {      // if set up and dealer has taken turn
                     determineWinner();
-                } else {
+                } else if (hasFinishedPlayersTurn == false) {
                     currentSide = 0;
+                } else if (hasFinishedDealersTurn == false) {
+                    hit();
+                    GUI.playView.playViewPanel.revalidate();
+                    GUI.playView.playViewPanel.repaint();
+                    hasFinishedDealersTurn = true;
+                    stand();
                 }
             }
+
         }
 
         public void determineWinner() {
