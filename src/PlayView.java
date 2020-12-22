@@ -74,26 +74,6 @@ public class PlayView {
         public int getFinalWinner() {
             return this.finalWinner;
         }
-        //setters
-        public void setAceL(boolean input) {
-            this.hasAceL = input;
-        }
-
-        public void setAceR(boolean input) {
-            this.hasAceR = input;
-        }
-
-        public void setAceM(boolean input) {
-            this.hasAceM = input;
-        }
-
-        public void setNumberOfPlayers(int input) {
-            this.numberOfPlayers = input;
-        }
-
-        public void setHasFinishedSettingUp(boolean input) {
-            this.hasFinishedSettingUp = input;
-        }
 
         public void retrieveNewDeck() {
             File folder = new File("Card/");
