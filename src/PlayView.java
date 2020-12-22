@@ -8,10 +8,10 @@ import java.util.Random;
 public class PlayView {
 
     public static class CardFunctionality {
-        CardView[][] usersHandsList = new CardView[3][5];
+        public static CardView[][] usersHandsList = new CardView[3][5];
         // number of players, used when checking winners in CardFunctionality
         public int numberOfPlayers = 0;
-        public int currentSide = 0;        // start on the left
+        public static int currentSide;        // start on the left
         public boolean hasFinishedSettingUp = false;
 
         // total values for each hand
@@ -34,6 +34,7 @@ public class PlayView {
         public boolean hasAceL = false;
         public boolean hasAceR = false;
         public boolean hasAceM = false;
+
         CardFunctionality() {
             retrieveNewDeck();
         }
@@ -368,33 +369,6 @@ public class PlayView {
             scoreLabelM.setBounds(462, 150, 100, 50);
             background.add(scoreLabelM);
         }
-
-//    static void resetGame() {
-//        scoreLabelL.setText("Score: 0");
-//        scoreLabelR.setText("Score: 0");
-//        scoreLabelM.setText("Score: 0");
-//
-//        betLabel.setText("My bet: 0");
-//        numberOfPlayers = 0;
-//
-//        hasLost = new boolean[]{false, false, false};
-//
-//        usersHandsList = new CardView[3][5];
-//        currentSide = 0;        // start on the left      // needs to be accessed in CardView
-//
-//        hasAceL = false;
-//        hasAceR = false;
-//        hasAceM = false;
-//
-//        inputBet = 0;
-//        background.repaint();
-
-
-        // used for setting position, needs to be incremented ea. time
-//        GUI.
-//        GUI.playView = new PlayView();
-//
-//    }
 
         public JPanel getPlayViewPanel() {
             return playViewPanel;

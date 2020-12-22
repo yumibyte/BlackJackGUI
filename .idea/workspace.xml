@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="85ab772b-8339-485b-8256-a41a106ad6ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/CardFunctionality.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/CardView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardFunctionality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardFunctionality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -140,69 +135,19 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="67" />
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>304</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="68" />
+          <line>305</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="78" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="80" />
+          <line>306</line>
+          <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/CardFunctionality.java</url>
@@ -220,14 +165,6 @@
           </properties>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>53</line>
-          <properties class="PlayView.CardFunctionality" method="hit">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -235,6 +172,7 @@
         <watch expression="usersHandsList" language="JAVA" />
         <watch expression="numberOfPlayers" language="JAVA" />
         <watch expression="int_random" language="JAVA" />
+        <watch expression="currentSide" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
