@@ -14,6 +14,7 @@ public class PlayView {
         public int currentSide;        // start on the left
         private boolean hasFinishedSettingUp;
 
+        private int finalWinner;
         // total values for each hand
         private int totalL;
         private int totalR;
@@ -69,15 +70,10 @@ public class PlayView {
 
         }
 
-//        // getters
-//        public int getCurrentSide() {
-//            return this.currentSide;
-//        }
-//
-//        public CardView[][] getUsersHandsList() {
-//            return this.usersHandsList;
-//        }
-
+        // getters
+        public int getFinalWinner() {
+            return this.finalWinner;
+        }
         //setters
         public void setAceL(boolean input) {
             this.hasAceL = input;
@@ -163,10 +159,12 @@ public class PlayView {
             }
         }
 
-        void determineWinner() {
+        public void determineWinner() {
 
             // flip over dealers card that was hidden
             CardView dealersHand = usersHandsList[2][0];
+            totalM += dealersHand.value;
+            GUI.playView.scoreLabelM.setText("Score: " + totalM);
             dealersHand.cardDisplay.setIcon(new ImageIcon("Card/" + dealersHand.cardName));
 
 
@@ -193,18 +191,22 @@ public class PlayView {
             Collections.sort(sortedWinnersScores);
             Collections.reverse(sortedWinnersScores);
 
-            int finalWinner = -1;
-
             // find which player corresponds to the highest number
             for (int player = 0; player < sortedWinnersScores.size(); player ++) {
                 if (winnersScores[player] == sortedWinnersScores.get(0)) {
                     finalWinner = player;
                 }
             }
-            System.out.println(finalWinner);
+
+            if (numberOfPlayers == 2 && finalWinner == 1) {     // if there's two people and the 2nd person wins, the dealer won
+                finalWinner += 1;
+
+            }
 
             // performed in because that is where all the vars all
             GUI.resetGame();
+
+
         }
 
         void createCard(String cardName, int side) {
@@ -290,7 +292,9 @@ public class PlayView {
                     }
                     break;
                 case 2:
-                    totalM += newCard.value;
+                    if (usersHandsList[2][1] != null) {     // keep the first card's value hidden
+                        totalM += newCard.value;
+                    }
 
                     if (totalM > 21) {
                         if (hasAceM) {
@@ -393,6 +397,8 @@ public class PlayView {
         public JLabel scoreLabelR;
         public JLabel scoreLabelM;      // dealer
         public double inputBet;
+        public double rightBet = 300;
+        public double dealerBet = 100;
 
         PlayViewGUI() {
             playViewPanel = new JPanel();
