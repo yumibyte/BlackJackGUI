@@ -142,43 +142,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="98" />
+          <line>285</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>143</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>368</line>
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>369</line>
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>366</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>155</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="107" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>135</line>
-          <option name="timeStamp" value="108" />
+          <line>286</line>
+          <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/CardFunctionality.java</url>
@@ -196,44 +166,12 @@
           </properties>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>150</line>
-          <properties class="PlayView.CardFunctionality" method="stand">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>114</line>
-          <properties class="PlayView.CardFunctionality" method="hit">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="106" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>209</line>
-          <properties class="PlayView.CardFunctionality" method="createCard">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
+        <watch expression="totalM" language="JAVA" />
         <watch expression="usersHandsList" language="JAVA" />
-        <watch expression="numberOfPlayers" language="JAVA" />
-        <watch expression="int_random" language="JAVA" />
-        <watch expression="currentSide" language="JAVA" />
-        <watch expression="playView.totalL" language="JAVA" />
-        <watch expression="GUI.playView.usersHandsList" language="JAVA" />
-        <watch expression="getUsersHandsList()" language="JAVA" />
-        <watch expression="tempCards" language="JAVA" />
-        <watch expression="currentSide" language="JAVA" />
-        <watch expression="this" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

@@ -69,15 +69,6 @@ public class PlayView {
 
         }
 
-//        // getters
-//        public int getCurrentSide() {
-//            return this.currentSide;
-//        }
-//
-//        public CardView[][] getUsersHandsList() {
-//            return this.usersHandsList;
-//        }
-
         //setters
         public void setAceL(boolean input) {
             this.hasAceL = input;
@@ -167,6 +158,8 @@ public class PlayView {
 
             // flip over dealers card that was hidden
             CardView dealersHand = usersHandsList[2][0];
+            totalM += dealersHand.value;
+            GUI.playView.scoreLabelM.setText("Score: " + totalM);
             dealersHand.cardDisplay.setIcon(new ImageIcon("Card/" + dealersHand.cardName));
 
 
@@ -290,7 +283,9 @@ public class PlayView {
                     }
                     break;
                 case 2:
-                    totalM += newCard.value;
+                    if (usersHandsList[2][1] != null) {     // keep the first card's value hidden
+                        totalM += newCard.value;
+                    }
 
                     if (totalM > 21) {
                         if (hasAceM) {
