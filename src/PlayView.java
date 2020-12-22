@@ -32,9 +32,9 @@ public class PlayView {
         private int positionXm;       // set at top middle
         private int positionym;
 
-        private boolean hasAceL;
-        private boolean hasAceR;
-        private boolean hasAceM;
+        private static boolean hasAceL;
+        private static boolean hasAceR;
+        private static boolean hasAceM;
 
         CardFunctionality() {
 
@@ -70,29 +70,17 @@ public class PlayView {
 
         }
 
+        // setters
+        public void setNumberOfPlayers(int i) {
+            numberOfPlayers = i;
+        }
+
+        public void setHasFinishedSettingUp(boolean j) {
+            hasFinishedSettingUp = j;
+        }
         // getters
         public int getFinalWinner() {
             return this.finalWinner;
-        }
-        //setters
-        public void setAceL(boolean input) {
-            this.hasAceL = input;
-        }
-
-        public void setAceR(boolean input) {
-            this.hasAceR = input;
-        }
-
-        public void setAceM(boolean input) {
-            this.hasAceM = input;
-        }
-
-        public void setNumberOfPlayers(int input) {
-            this.numberOfPlayers = input;
-        }
-
-        public void setHasFinishedSettingUp(boolean input) {
-            this.hasFinishedSettingUp = input;
         }
 
         public void retrieveNewDeck() {
@@ -160,6 +148,34 @@ public class PlayView {
         }
 
         public void determineWinner() {
+            if (totalL < 11) {
+                // convert to 1 for ace if the person "busts"
+                if (hasAceL) {
+                    totalL += 10;       // ace was worth 11 now is worth 1
+                    GUI.playView.scoreLabelL.setText("Score: " + totalL);
+                } else {
+                    GUI.playView.scoreLabelL.setText("BUST!");
+                    hasLost[0] = true;
+                }
+            }
+            else if (totalR < 11) {
+                if (hasAceR) {
+                    totalR += 10;       // ace was worth 11 now is worth 1
+                    GUI.playView.scoreLabelR.setText("Score: " + totalR);
+                } else {
+                    GUI.playView.scoreLabelR.setText("BUST!");
+                    numberOfPlayers -= 1;
+                    hasLost[1] = true;
+                }
+            } else if (totalM < 11) {
+                if (hasAceM) {
+                    totalM += 10;       // ace was worth 11 now is worth 1
+                    GUI.playView.scoreLabelM.setText("Score: " + totalM);
+                } else {
+                    GUI.playView.scoreLabelM.setText("BUST!");
+                    hasLost[2] = true;
+                }
+            }
 
             // flip over dealers card that was hidden
             CardView dealersHand = usersHandsList[2][0];
@@ -167,6 +183,10 @@ public class PlayView {
             GUI.playView.scoreLabelM.setText("Score: " + totalM);
             dealersHand.cardDisplay.setIcon(new ImageIcon("Card/" + dealersHand.cardName));
 
+            if (totalM > 21) {
+                GUI.playView.scoreLabelM.setText("BUST!");
+                hasLost[2] = true;
+            } 
 
             int[] winnersScores;
             if (numberOfPlayers == 2) {
@@ -198,15 +218,20 @@ public class PlayView {
                 }
             }
 
-            if (numberOfPlayers == 2 && finalWinner == 1) {     // if there's two people and the 2nd person wins, the dealer won
-                finalWinner += 1;
 
+
+
+            if (numberOfPlayers == 2) {     // if there's two people and the 2nd person wins, the dealer won
+                if (winnersScores[0] == winnersScores[1]) {
+                    finalWinner = -1;
+                }
+                else if (finalWinner == 1) {
+                    finalWinner += 1;
+                }
             }
 
             // performed in because that is where all the vars all
             GUI.resetGame();
-
-
         }
 
         void createCard(String cardName, int side) {
@@ -260,54 +285,24 @@ public class PlayView {
                 case 0:
                     totalL += newCard.value;
 
-                    if (totalL > 21) {
-                        // convert to 1 for ace if the person "busts"
-                        if (hasAceL) {
-                            totalR -= 10;       // ace was worth 11 now is worth 1
-                            GUI.playView.scoreLabelL.setText("Score: " + totalL);
-                        } else {
-                            GUI.playView.scoreLabelL.setText("BUST!");
-                            hasLost[0] = true;
-                            stand();
-                        }
-                    } else {
-                        GUI.playView.scoreLabelL.setText("Score: " + totalL);
-                    }
+                    GUI.playView.scoreLabelL.setText("Score: " + totalL);
+
                     break;
                 case 1:
                     totalR += newCard.value;
 
-                    if (totalR > 21) {
-                        if (hasAceR) {
-                            totalR -= 10;       // ace was worth 11 now is worth 1
-                            GUI.playView.scoreLabelR.setText("Score: " + totalR);
-                        } else {
-                            GUI.playView.scoreLabelR.setText("BUST!");
-                            numberOfPlayers -= 1;
-                            hasLost[1] = true;
-                            stand();
-                        }
-                    } else {
-                        GUI.playView.scoreLabelR.setText("Score: " + totalR);
-                    }
+
+                    GUI.playView.scoreLabelR.setText("Score: " + totalR);
+
                     break;
                 case 2:
                     if (usersHandsList[2][1] != null) {     // keep the first card's value hidden
                         totalM += newCard.value;
                     }
 
-                    if (totalM > 21) {
-                        if (hasAceM) {
-                            totalM -= 10;       // ace was worth 11 now is worth 1
-                            GUI.playView.scoreLabelM.setText("Score: " + totalM);
-                        } else {
-                            GUI.playView.scoreLabelM.setText("BUST!");
-                            hasLost[2] = true;
-                            stand();
-                        }
-                    } else {
-                        GUI.playView.scoreLabelM.setText("Score: " + totalM);
-                    }
+
+                    GUI.playView.scoreLabelM.setText("Score: " + totalM);
+
                     break;
             }
         }
@@ -347,13 +342,13 @@ public class PlayView {
                     // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
                     switch (currentSide) {
                         case 0:
-                            setAceL(true);
+                            CardFunctionality.hasAceL = true;
                             break;
                         case 1:
-                            setAceR(true);
+                            CardFunctionality.hasAceR = true;
                             break;
                         case 2:
-                            setAceM(true);
+                            CardFunctionality.hasAceM = true;
                             break;
                     }
                     break;
@@ -369,7 +364,6 @@ public class PlayView {
 
             ImageIcon newCard;
             // create image
-            System.out.println(usersHandsList[2][0]);
             if (currentSide == 2 && usersHandsList[2][0] == null) {        // if it's the dealer's first card
                 newCard = new ImageIcon("ExtraCards/" + "cardBack.png");
             } else {

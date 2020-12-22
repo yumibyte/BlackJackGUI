@@ -49,8 +49,10 @@ public class GUI implements ActionListener {
             message = "You won! I suppose here's your " + amountWon + " dollars...";
         } else if (finalWinner == 1) {      // right person won
             message = "Close one... sad a robot's better than you. Right person +" + 400 + " dollars";
-        } else {        // dealer won
+        } else if (finalWinner == 2) {        // dealer won
             message = "The ole' expert won again. Dealer +" + 200 + " dollars";
+        } else {        // -1, tie
+            message = "Tie! You're all bad at blackjack. Here's your $" + playView.inputBet + " back";
         }
         String[] options = {"Play Again", "Exit to main menu"};
         String nextAction = (String)JOptionPane.showInputDialog(null, message,
@@ -63,6 +65,9 @@ public class GUI implements ActionListener {
             gameSetup();
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
+        } else {
+            mainPanel = mainMenuView.retrievePanel();     // instantiate main view
+            frame.setContentPane(mainPanel);
         }
 
     }
@@ -71,7 +76,6 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainMenuView.singlePlayerButton) {
             gameSetup();
-
         }
         else if (e.getSource() == playView.hitButton) {
             playView.hit();      // from cardFunctionality
