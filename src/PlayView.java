@@ -16,9 +16,8 @@ public class PlayView {
 
         private int finalWinner;
         // total values for each hand
-        private int totalL;
-        private int totalR;
-        private int totalM;
+        private int[] scores;
+
         private boolean[] hasLost;
         private ArrayList<String> mainCards;        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
         // used for setting position, needs to be incremented ea. time
@@ -32,9 +31,7 @@ public class PlayView {
         private int positionXm;       // set at top middle
         private int positionym;
 
-        private static boolean hasAceL;
-        private static boolean hasAceR;
-        private static boolean hasAceM;
+        public static boolean[] hasAces;
 
         CardFunctionality() {
 
@@ -44,9 +41,6 @@ public class PlayView {
             currentSide = 0;
             hasFinishedSettingUp = false;
 
-            totalL = 0;
-            totalR = 0;
-            totalM = 0;
             hasLost = new boolean[] {false, false, false};
             mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
             // used for setting position, needs to be incremented ea. time
@@ -60,10 +54,8 @@ public class PlayView {
             positionXm = 462;       // set at top middle
             positionym = 50;
 
-            hasAceL = false;
-            hasAceR = false;
-            hasAceM = false;
-
+            hasAces = new boolean[] {false, false, false};
+            scores = new int[] {0, 0, 0};
             // setup main deck
             retrieveNewDeck();
 
@@ -74,6 +66,10 @@ public class PlayView {
         public void setNumberOfPlayers(int i) {
             numberOfPlayers = i;
         }
+
+//        public void setHasAces(int index, boolean value) {
+//            hasAces[index] = value;
+//        }
 
         public void setHasFinishedSettingUp(boolean j) {
             hasFinishedSettingUp = j;
@@ -148,57 +144,57 @@ public class PlayView {
         }
 
         public void determineWinner() {
-            if (totalL < 11) {
-                // convert to 1 for ace if the person "busts"
-                if (hasAceL) {
-                    totalL += 10;       // ace was worth 11 now is worth 1
-                    GUI.playView.scoreLabelL.setText("Score: " + totalL);
-                } else {
-                    GUI.playView.scoreLabelL.setText("BUST!");
-                    hasLost[0] = true;
-                }
-            }
-            else if (totalR < 11) {
-                if (hasAceR) {
-                    totalR += 10;       // ace was worth 11 now is worth 1
-                    GUI.playView.scoreLabelR.setText("Score: " + totalR);
-                } else {
-                    GUI.playView.scoreLabelR.setText("BUST!");
-                    numberOfPlayers -= 1;
-                    hasLost[1] = true;
-                }
-            } else if (totalM < 11) {
-                if (hasAceM) {
-                    totalM += 10;       // ace was worth 11 now is worth 1
-                    GUI.playView.scoreLabelM.setText("Score: " + totalM);
-                } else {
-                    GUI.playView.scoreLabelM.setText("BUST!");
-                    hasLost[2] = true;
-                }
-            }
 
             // flip over dealers card that was hidden
             CardView dealersHand = usersHandsList[2][0];
-            totalM += dealersHand.value;
-            GUI.playView.scoreLabelM.setText("Score: " + totalM);
+            scores[2] += dealersHand.value;
+            GUI.playView.scoreLabelM.setText("Score: " + scores[2]);
             dealersHand.cardDisplay.setIcon(new ImageIcon("Card/" + dealersHand.cardName));
 
-            if (totalM > 21) {
-                GUI.playView.scoreLabelM.setText("BUST!");
-                hasLost[2] = true;
-            } 
+            // edit values based on aces
+            for (int i = 0; i < 3; i ++) {
+                if (scores[i] <= 11) {
+                    if (hasAces[i]) {
+                        scores[i] += 10;
+                    }
+                }
+            }
+            GUI.playView.scoreLabelL.setText("Score: " + scores[0]);
+            GUI.playView.scoreLabelR.setText("Score: " + scores[1]);
+            GUI.playView.scoreLabelM.setText("Score: " + scores[2]);
 
+            // check if their new value means they lost
+            for (int i = 0; i < 3; i ++) {
+                if (scores[i] > 21) {
+                    hasLost[i] = true;
+                }
+            }
+
+            // check if they've busted
+            for (int j = 0; j < 3; j ++) {
+                if (j == 0 && hasLost[j]) {
+                    GUI.playView.scoreLabelL.setText("BUST!");
+                }
+                else if (j == 1 && hasLost[j]) {
+                    GUI.playView.scoreLabelR.setText("BUST!");
+                }
+                else if (j == 2 && hasLost[j]) {
+                    GUI.playView.scoreLabelM.setText("BUST!");
+                }
+            }
+
+            // sort winnersScores
             int[] winnersScores;
             if (numberOfPlayers == 2) {
-                winnersScores = new int[] {totalL, totalM};
+                winnersScores = new int[] {scores[0], scores[2]};       // you and dealer
+                hasLost = new boolean[] {hasLost[0], hasLost[2]};
             } else {
-                winnersScores = new int[] {totalL, totalR, totalM};
+                winnersScores = new int[] {scores[0], scores[1], scores[2]};        // 2 cpus and dealer
+                // has lost is still all 3
             }
             for (int i = 0; i < numberOfPlayers; i ++) {
                 if (hasLost[i] == true) {
-                    for (int j = i; j < winnersScores.length - 1; j++) {
-                        winnersScores[j] = winnersScores[j + 1];
-                    }
+                    winnersScores[i] = 0;       // place in last
                 }
             }
 
@@ -276,33 +272,24 @@ public class PlayView {
                 if (cardList[card] != null) cardsInHandLength++;
             }
 
-            CardView newCard = new CardView(positionX, positiony, cardName, currentSide, usersHandsList);
+            CardView newCard = new CardView(positionX, positiony, cardName, currentSide, usersHandsList, hasAces);
             cardList[cardsInHandLength] = newCard;      // make next card the new card
 
             usersHandsList[sideInt] = cardList;      // set all hands at the position with the modified list
-
             switch (side) {
                 case 0:
-                    totalL += newCard.value;
-
-                    GUI.playView.scoreLabelL.setText("Score: " + totalL);
-
+                    scores[0] += newCard.value;
+                    GUI.playView.scoreLabelL.setText("Score: " + scores[0]);
                     break;
                 case 1:
-                    totalR += newCard.value;
-
-
-                    GUI.playView.scoreLabelR.setText("Score: " + totalR);
-
+                    scores[1] += newCard.value;
+                    GUI.playView.scoreLabelR.setText("Score: " + scores[1]);
                     break;
                 case 2:
                     if (usersHandsList[2][1] != null) {     // keep the first card's value hidden
-                        totalM += newCard.value;
+                        scores[2] += newCard.value;
                     }
-
-
-                    GUI.playView.scoreLabelM.setText("Score: " + totalM);
-
+                    GUI.playView.scoreLabelM.setText("Score: " + scores[2]);
                     break;
             }
         }
@@ -317,7 +304,7 @@ public class PlayView {
         String cardName;
         JLabel cardDisplay;
 
-        CardView(int positionX, int positiony, String imageName, int currentSideInput, CardView[][] usersHandsListInput) {
+        CardView(int positionX, int positiony, String imageName, int currentSideInput, CardView[][] usersHandsListInput, boolean[] hasAcesInput) {
             // can be left without inheritance because this is an association
 
             // locate position
@@ -325,7 +312,7 @@ public class PlayView {
             this.currentSide = currentSideInput;
             this.positionX = positionX;
             this.positiony = positiony;
-
+            this.hasAces = hasAcesInput;
             cardName = imageName;       // set this so the dealer's first card can be recalled later
             // associate value
             String[] cardStringContents = imageName.substring(0, imageName.length() - 4).split("_");
@@ -336,20 +323,14 @@ public class PlayView {
             switch (cardStringContents[1]) {
 
                 case "ace":
-                    value = 11;
+                    value = 1;
 
                     // nested case to check if there's an ace
                     // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
-                    switch (currentSide) {
-                        case 0:
-                            CardFunctionality.hasAceL = true;
-                            break;
-                        case 1:
-                            CardFunctionality.hasAceR = true;
-                            break;
-                        case 2:
-                            CardFunctionality.hasAceM = true;
-                            break;
+                    for (int i = 0; i < 3; i ++) {
+                        if (currentSide == i) {
+                            hasAces[i] = true;
+                        }
                     }
                     break;
 
