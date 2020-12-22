@@ -326,9 +326,6 @@ public class PlayView {
             // associate value
             String[] cardStringContents = imageName.substring(0, imageName.length() - 4).split("_");
 
-            for (int i = 0; i < cardStringContents.length; i ++) {
-                System.out.println(cardStringContents[i]);
-            }
             switch (cardStringContents[1]) {
 
                 case "ace":
@@ -380,6 +377,7 @@ public class PlayView {
         public JLabel scoreLabelL;
         public JLabel scoreLabelR;
         public JLabel scoreLabelM;      // dealer
+        public JButton exitButton;
         public double inputBet;
         public double rightBet = 300;
         public double dealerBet = 100;
@@ -392,6 +390,11 @@ public class PlayView {
             background.setIcon(blackJackBackground);
             background.setBounds(200, 400, 1000, 600);
             playViewPanel.add(background);
+
+            exitButton = new JButton("Exit");
+            exitButton.setBounds(8, 8, 80, 25);
+            exitButton.addActionListener(new GUI());
+            background.add(exitButton);
 
             hitButton = new JButton("Hit!");
             hitButton.setBounds(100, 50, 175, 50);

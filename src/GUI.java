@@ -41,6 +41,11 @@ public class GUI implements ActionListener {
         playView.currentSide = 0;
     }
 
+    public static void goToMainMenu() {
+        playView = new PlayView.PlayViewGUI();
+        mainPanel = mainMenuView.retrievePanel();     // instantiate main view
+        frame.setContentPane(mainPanel);
+    }
     public static void resetGame() {        // static method because it's called from static classes
 
         int finalWinner = playView.getFinalWinner();
@@ -65,9 +70,7 @@ public class GUI implements ActionListener {
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         } else {
-            playView = new PlayView.PlayViewGUI();
-            mainPanel = mainMenuView.retrievePanel();     // instantiate main view
-            frame.setContentPane(mainPanel);
+            goToMainMenu();
         }
 
     }
@@ -79,7 +82,6 @@ public class GUI implements ActionListener {
         }
         else if (e.getSource() == playView.hitButton) {
             playView.hit();      // from cardFunctionality
-
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         }
@@ -87,6 +89,9 @@ public class GUI implements ActionListener {
             playView.stand();
             playView.hasFinishedPlayersTurn = true;
             playView.stand();
+        }
+        else if (e.getSource() == playView.exitButton) {
+            goToMainMenu();
         }
     }
 }
