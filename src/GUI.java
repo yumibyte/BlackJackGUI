@@ -59,13 +59,12 @@ public class GUI implements ActionListener {
                 "Results", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
         if (nextAction.equals("Play Again")) {
-//            frame.revalidate();
-//            frame.repaint();
             playView = new PlayView.PlayViewGUI();
             gameSetup();
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
         } else {
+            playView = new PlayView.PlayViewGUI();
             mainPanel = mainMenuView.retrievePanel();     // instantiate main view
             frame.setContentPane(mainPanel);
         }
