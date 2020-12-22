@@ -21,12 +21,21 @@ public class GUI implements ActionListener {
         frame.setVisible(true);
     }
 
+    public static void resetGame() {        // static method because it's called from static classes
+        mainMenuView = new MainMenuView();
+        playView = null;
+        playView = new PlayView.PlayViewGUI();
+
+        GUI.playView.playViewPanel.revalidate();
+        GUI.playView.playViewPanel.repaint();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainMenuView.singlePlayerButton) {
 
             // set number of players to 2
-            playView.numberOfPlayers = 2;
+            playView.setNumberOfPlayers(2);
 
             // swap panels
             mainPanel = playView.getPlayViewPanel();
@@ -40,7 +49,7 @@ public class GUI implements ActionListener {
             playView.betLabel.setText("My Bet: " + playView.inputBet);
 
             playView.setupCards(); // from cardFunctionality
-            playView.hasFinishedSettingUp = true;
+            playView.setHasFinishedSettingUp(true);
 
 
         }

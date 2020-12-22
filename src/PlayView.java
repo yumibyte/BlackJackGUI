@@ -8,37 +8,96 @@ import java.util.Random;
 public class PlayView {
 
     public static class CardFunctionality {
-        CardView[][] usersHandsList = new CardView[3][5];
+        private CardView[][] usersHandsList;
         // number of players, used when checking winners in CardFunctionality
-        public int numberOfPlayers = 0;
-        public int currentSide = 0;        // start on the left
-        public boolean hasFinishedSettingUp = false;
+        private int numberOfPlayers;
+        private int currentSide;        // start on the left
+        private boolean hasFinishedSettingUp;
 
         // total values for each hand
-        public int totalL = 0;
-        public int totalR = 0;
-        public int totalM = 0;
-        public boolean[] hasLost = {false, false, false};
-        public static ArrayList<String> mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
+        private int totalL;
+        private int totalR;
+        private int totalM;
+        private boolean[] hasLost;
+        private ArrayList<String> mainCards;        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
         // used for setting position, needs to be incremented ea. time
 
-        int positionXl = 462;      // increment through positions provided, 2 each
-        int positionyl = 455;      // set in exact middle
+        private int positionXl;      // increment through positions provided, 2 each
+        private int positionyl;      // set in exact middle
 
-        int positionXr = 730;
-        int positionyr = 420;
+        private int positionXr;
+        private int positionyr;
 
-        int positionXm = 462;       // set at top middle
-        int positionym = 50;
+        private int positionXm;       // set at top middle
+        private int positionym;
 
-        public boolean hasAceL = false;
-        public boolean hasAceR = false;
-        public boolean hasAceM = false;
+        private boolean hasAceL;
+        private boolean hasAceR;
+        private boolean hasAceM;
+
         CardFunctionality() {
+
+            // setup all variables
+            usersHandsList = new CardView[3][5];
+            numberOfPlayers = 0;
+            currentSide = 0;
+            hasFinishedSettingUp = false;
+
+            totalL = 0;
+            totalR = 0;
+            totalM = 0;
+            hasLost = new boolean[] {false, false, false};
+            mainCards = new ArrayList<String>();        // using an arrayList so values can be added/removed w/ ease. Also since listOfFiles uses a list
+            // used for setting position, needs to be incremented ea. time
+
+            positionXl = 462;      // increment through positions provided, 2 each
+            positionyl = 455;      // set in exact middle
+
+            positionXr = 730;
+            positionyr = 420;
+
+            positionXm = 462;       // set at top middle
+            positionym = 50;
+
+            hasAceL = false;
+            hasAceR = false;
+            hasAceM = false;
+
+            // setup main deck
             retrieveNewDeck();
+
+
         }
 
-        public static void retrieveNewDeck() {
+        public int getCurrentSide() {
+            return currentSide;
+        }
+
+        public void setAceL(boolean input) {
+            hasAceL = input;
+        }
+
+        public void setAceR(boolean input) {
+            hasAceR = input;
+        }
+
+        public void setAceM(boolean input) {
+            hasAceM = input;
+        }
+
+        public CardView[][] getUsersHandsList() {
+            return usersHandsList;
+        }
+
+        public void setNumberOfPlayers(int input) {
+            numberOfPlayers = input;
+        }
+
+        public void setHasFinishedSettingUp(boolean input) {
+            hasFinishedSettingUp = input;
+        }
+
+        public void retrieveNewDeck() {
             File folder = new File("Card/");
             File[] listOfFiles = folder.listFiles();
 
@@ -143,7 +202,7 @@ public class PlayView {
             System.out.println(finalWinner);
 
             // performed in because that is where all the vars all
-//        resetGame();
+            GUI.resetGame();
         }
 
         void createCard(String cardName, int side) {
@@ -250,6 +309,7 @@ public class PlayView {
 
     public static class CardView extends CardFunctionality {
 
+        // not because it'll be instantiated multiple times
         int positionX;
         int positiony;
         int value;
@@ -277,15 +337,15 @@ public class PlayView {
 
                     // nested case to check if there's an ace
                     // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
-                    switch (currentSide) {
+                    switch (getCurrentSide()) {
                         case 0:
-                            hasAceL = true;
+                            setAceL(true);
                             break;
                         case 1:
-                            hasAceR = true;
+                            setAceR(true);
                             break;
                         case 2:
-                            hasAceM = true;
+                            setAceM(true);
                             break;
                     }
                     break;
@@ -301,7 +361,7 @@ public class PlayView {
 
             ImageIcon newCard;
             // create image
-            if (currentSide == 2 && usersHandsList[2][0] == null) {        // if it's the dealer's first card
+            if (getCurrentSide() == 2 && getUsersHandsList()[2][0] == null) {        // if it's the dealer's first card
                 newCard = new ImageIcon("ExtraCards/" + "cardBack.png");
             } else {
                 newCard = new ImageIcon("Card/" + imageName);
@@ -323,7 +383,7 @@ public class PlayView {
         public JLabel betLabel;      // needs to be reset
 
         // score labels w/ total points
-        // use public static so they are set in CardFunctionality
+        // use public so they are set in CardFunctionality
         public JLabel scoreLabelL;
         public JLabel scoreLabelR;
         public JLabel scoreLabelM;      // dealer
@@ -368,33 +428,6 @@ public class PlayView {
             scoreLabelM.setBounds(462, 150, 100, 50);
             background.add(scoreLabelM);
         }
-
-//    static void resetGame() {
-//        scoreLabelL.setText("Score: 0");
-//        scoreLabelR.setText("Score: 0");
-//        scoreLabelM.setText("Score: 0");
-//
-//        betLabel.setText("My bet: 0");
-//        numberOfPlayers = 0;
-//
-//        hasLost = new boolean[]{false, false, false};
-//
-//        usersHandsList = new CardView[3][5];
-//        currentSide = 0;        // start on the left      // needs to be accessed in CardView
-//
-//        hasAceL = false;
-//        hasAceR = false;
-//        hasAceM = false;
-//
-//        inputBet = 0;
-//        background.repaint();
-
-
-        // used for setting position, needs to be incremented ea. time
-//        GUI.
-//        GUI.playView = new PlayView();
-//
-//    }
 
         public JPanel getPlayViewPanel() {
             return playViewPanel;
