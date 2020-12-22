@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85ab772b-8339-485b-8256-a41a106ad6ab" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/MainMenuView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$PlayViewGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$PlayViewGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,13 +102,41 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>83</line>
+          <line>100</line>
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>144</line>
+          <line>146</line>
           <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>466</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="165" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>463</line>
+          <properties class="PlayView.UsersStats" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="161" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -107,6 +144,7 @@
       <configuration name="Application">
         <watch expression="usersHandsList" language="JAVA" />
         <watch expression="usersHandsList" language="JAVA" />
+        <watch expression="loadedStats" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

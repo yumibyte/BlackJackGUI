@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 public class PlayView {
+
+
 
     public static class CardFunctionality {
         public CardView[][] usersHandsList;
@@ -368,9 +370,12 @@ public class PlayView {
     public static class PlayViewGUI extends CardFunctionality {
         public JPanel playViewPanel;
         public JLabel background;        // needs to be reset after so it's public
+        public JLabel usersMoneyLabel;
         public JButton hitButton;
         public JButton standButton;
         public JLabel betLabel;      // needs to be reset
+        public JLabel winsLabel;
+        public JLabel lossesLabel;
 
         // score labels w/ total points
         // use public so they are set in CardFunctionality
@@ -406,10 +411,27 @@ public class PlayView {
             standButton.addActionListener(new GUI());
             background.add(standButton);
 
+            winsLabel = new JLabel("Wins: ");
+            winsLabel.setBounds(20, 560, 500, 25);
+            winsLabel.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 20));
+            background.add(winsLabel);
+
+            lossesLabel = new JLabel("Losses: ");
+            lossesLabel.setBounds(20, 590, 500, 25);
+            lossesLabel.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 20));
+            background.add(lossesLabel);
+
+            usersMoneyLabel = new JLabel("My Money: ");
+            usersMoneyLabel.setBounds(20, 620, 500, 25);
+            usersMoneyLabel.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 20));
+            background.add(usersMoneyLabel);
+
             betLabel = new JLabel("My Bet: ");
             betLabel.setBounds(20, 650, 500, 25);
             betLabel.setFont(new Font("Helvetica", Font.ROMAN_BASELINE, 20));
             background.add(betLabel);
+
+
 
             scoreLabelL = new JLabel("Score: 0");
             scoreLabelL.setFont(new Font("Helvetica", Font.PLAIN, 20));
@@ -429,6 +451,57 @@ public class PlayView {
 
         public JPanel getPlayViewPanel() {
             return playViewPanel;
+        }
+
+
+    }
+
+    public static class UsersStats implements Serializable {
+        public double usersMoney;
+        public int wins;
+        public int losses;
+
+        UsersStats(double usersMoney, int wins, int losses) {
+
+            this.usersMoney = usersMoney;
+            this.wins = wins;
+            this.losses = losses;
+
+            GUI.playView.usersMoneyLabel.setText("My Money: " + usersMoney);
+            GUI.playView.winsLabel.setText("Wins: " + wins);
+            GUI.playView.lossesLabel.setText("Losses: " + losses);
+        }
+
+        private void writeToFile(ObjectOutputStream out) throws IOException {
+
+            out.writeObject(this);
+            out.close();
+        }
+
+        public void saveStats() {
+            try (FileOutputStream f = new FileOutputStream("BlackJackInfo.txt");
+                 ObjectOutputStream s = new ObjectOutputStream(f)) {
+                 writeToFile(s);
+
+            } catch (IOException error) {
+                error.printStackTrace();
+            }
+            System.out.println("Successfully saved game!");
+        }
+
+        public void readFile() throws IOException {
+
+            // needs to be returned later, so initialized outside of try/catch
+            UsersStats loadedStats = null;
+            try(FileInputStream in = new FileInputStream("BlackJackInfo.txt");
+                ObjectInputStream s = new ObjectInputStream(in)) {
+                loadedStats = (UsersStats) s.readObject();
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Loaded previous game!");
+            GUI.usersStats = loadedStats;
         }
     }
 
