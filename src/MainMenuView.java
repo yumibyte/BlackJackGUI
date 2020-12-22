@@ -7,6 +7,7 @@ public class MainMenuView {
     static JLabel blackJackLabel;
     static JButton singlePlayerButton;
     static JButton saveStatsButton;
+    static JButton loadStatsButton;
 
     MainMenuView() {
         menuPanel = new JPanel();
@@ -28,6 +29,11 @@ public class MainMenuView {
         saveStatsButton.setBounds(300, 350, 300, 50);
         saveStatsButton.addActionListener(new GUI());
         menuPanel.add(saveStatsButton);
+
+        loadStatsButton = new JButton("Load Stats");
+        loadStatsButton.setBounds(300, 425, 300, 50);
+        loadStatsButton.addActionListener(new GUI());
+        menuPanel.add(loadStatsButton);
     }
 
     JPanel retrievePanel() {

@@ -1,13 +1,14 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class GUI implements ActionListener {
     public static JFrame frame;
     public static JPanel mainPanel;
     public static MainMenuView mainMenuView = new MainMenuView();
     public static PlayView.PlayViewGUI playView = new PlayView.PlayViewGUI();
-//    public static CardFunctionality cardFunctionality = new CardFunctionality();
+    public static PlayView.UsersStats usersStats = new PlayView.UsersStats(100, 0, 0);
 
     public static void main(String[] args) {
 
@@ -50,16 +51,28 @@ public class GUI implements ActionListener {
 
         int finalWinner = playView.getFinalWinner();
         String message = "";
+
         if (finalWinner == 0) {     // player won
+
             double amountWon = playView.inputBet + 100;
+            usersStats.usersMoney += amountWon;
             message = "You won! I suppose here's your " + amountWon + " dollars...";
+            usersStats.wins += 1;
         } else if (finalWinner == 1) {      // right person won
+
+            usersStats.usersMoney -= playView.inputBet;
             message = "Close one... sad a robot's better than you. Right person +" + 400 + " dollars";
+            usersStats.losses += 1;
         } else if (finalWinner == 2) {        // dealer won
+
+            usersStats.usersMoney -= playView.inputBet;
             message = "The ole' expert won again. Dealer +" + 200 + " dollars";
+            usersStats.losses += 1;
         } else {        // -1, tie
             message = "Tie! You're all bad at blackjack. Here's your $" + playView.inputBet + " back";
         }
+
+
         String[] options = {"Play Again", "Exit to main menu"};
         String nextAction = (String)JOptionPane.showInputDialog(null, message,
                 "Results", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -72,6 +85,9 @@ public class GUI implements ActionListener {
         } else {
             goToMainMenu();
         }
+        GUI.playView.usersMoneyLabel.setText("My Money: " + usersStats.usersMoney);
+        GUI.playView.winsLabel.setText("Wins: " + usersStats.wins);
+        GUI.playView.lossesLabel.setText("Losses: " + usersStats.losses);
 
     }
 
@@ -94,7 +110,14 @@ public class GUI implements ActionListener {
             goToMainMenu();
         }
         else if (e.getSource() == mainMenuView.saveStatsButton) {
-            playView.saveStats();
+            usersStats.saveStats();
+        }
+        else if (e.getSource() == mainMenuView.loadStatsButton) {
+            try {
+                usersStats.readFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 }
