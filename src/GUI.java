@@ -63,6 +63,9 @@ public class GUI implements ActionListener {
             gameSetup();
             playView.playViewPanel.revalidate();
             playView.playViewPanel.repaint();
+        } else {
+            mainPanel = mainMenuView.retrievePanel();     // instantiate main view
+            frame.setContentPane(mainPanel);
         }
 
     }
@@ -71,7 +74,6 @@ public class GUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainMenuView.singlePlayerButton) {
             gameSetup();
-
         }
         else if (e.getSource() == playView.hitButton) {
             playView.hit();      // from cardFunctionality

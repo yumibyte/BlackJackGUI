@@ -32,9 +32,9 @@ public class PlayView {
         private int positionXm;       // set at top middle
         private int positionym;
 
-        private boolean hasAceL;
-        private boolean hasAceR;
-        private boolean hasAceM;
+        private static boolean hasAceL;
+        private static boolean hasAceR;
+        private static boolean hasAceM;
 
         CardFunctionality() {
 
@@ -160,13 +160,12 @@ public class PlayView {
         }
 
         public void determineWinner() {
-
+            System.out.println(hasAceL + " " + hasAceM);
             // flip over dealers card that was hidden
             CardView dealersHand = usersHandsList[2][0];
             totalM += dealersHand.value;
             GUI.playView.scoreLabelM.setText("Score: " + totalM);
             dealersHand.cardDisplay.setIcon(new ImageIcon("Card/" + dealersHand.cardName));
-
 
             int[] winnersScores;
             if (numberOfPlayers == 2) {
@@ -198,15 +197,34 @@ public class PlayView {
                 }
             }
 
+            for (int player = 0; player < sortedWinnersScores.size(); player ++) {
+                if (player == 0 && hasAceL == true && finalWinner != player) {
+                    if (totalL + 10 <= 21 && totalL + 10 > sortedWinnersScores.get(0)) {
+                        totalL += 10;
+                        sortedWinnersScores.set(0, player);
+                    }
+                }
+                else if (player == 1 && hasAceR == true && finalWinner != player) {
+                    if (totalR + 10 <= 21 && totalR + 10 > sortedWinnersScores.get(0)) {
+                        totalR += 10;
+                        sortedWinnersScores.set(0, player);
+                    }
+                }
+                else if (player == 2 && hasAceM == true && finalWinner != player) {
+                    if (totalM + 10 <= 21 && totalM + 10 > sortedWinnersScores.get(0)) {
+                        totalM += 10;
+                        sortedWinnersScores.set(0, player);
+                    }
+                }
+            }
+
+
             if (numberOfPlayers == 2 && finalWinner == 1) {     // if there's two people and the 2nd person wins, the dealer won
                 finalWinner += 1;
-
             }
 
             // performed in because that is where all the vars all
             GUI.resetGame();
-
-
         }
 
         void createCard(String cardName, int side) {
@@ -347,13 +365,13 @@ public class PlayView {
                     // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
                     switch (currentSide) {
                         case 0:
-                            setAceL(true);
+                            CardFunctionality.hasAceL = true;
                             break;
                         case 1:
-                            setAceR(true);
+                            CardFunctionality.hasAceR = true;
                             break;
                         case 2:
-                            setAceM(true);
+                            CardFunctionality.hasAceM = true;
                             break;
                     }
                     break;
@@ -369,7 +387,6 @@ public class PlayView {
 
             ImageIcon newCard;
             // create image
-            System.out.println(usersHandsList[2][0]);
             if (currentSide == 2 && usersHandsList[2][0] == null) {        // if it's the dealer's first card
                 newCard = new ImageIcon("ExtraCards/" + "cardBack.png");
             } else {
