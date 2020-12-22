@@ -3,9 +3,9 @@ import java.awt.*;
 
 public class MainMenuView {
 
-    JPanel menuPanel;
-    JLabel blackJackLabel;
-    JButton singlePlayerButton;
+    static JPanel menuPanel;
+    static JLabel blackJackLabel;
+    static JButton singlePlayerButton;
 
     MainMenuView() {
         menuPanel = new JPanel();
