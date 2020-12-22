@@ -93,5 +93,8 @@ public class GUI implements ActionListener {
         else if (e.getSource() == playView.exitButton) {
             goToMainMenu();
         }
+        else if (e.getSource() == mainMenuView.saveStatsButton) {
+            playView.saveStats();
+        }
     }
 }
