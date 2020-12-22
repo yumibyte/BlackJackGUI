@@ -8,10 +8,10 @@ import java.util.Random;
 public class PlayView {
 
     public static class CardFunctionality {
-        private CardView[][] usersHandsList;
+        public CardView[][] usersHandsList;
         // number of players, used when checking winners in CardFunctionality
         private int numberOfPlayers;
-        private int currentSide;        // start on the left
+        public int currentSide;        // start on the left
         private boolean hasFinishedSettingUp;
 
         // total values for each hand
@@ -69,32 +69,34 @@ public class PlayView {
 
         }
 
-        public int getCurrentSide() {
-            return currentSide;
-        }
+//        // getters
+//        public int getCurrentSide() {
+//            return this.currentSide;
+//        }
+//
+//        public CardView[][] getUsersHandsList() {
+//            return this.usersHandsList;
+//        }
 
+        //setters
         public void setAceL(boolean input) {
-            hasAceL = input;
+            this.hasAceL = input;
         }
 
         public void setAceR(boolean input) {
-            hasAceR = input;
+            this.hasAceR = input;
         }
 
         public void setAceM(boolean input) {
-            hasAceM = input;
-        }
-
-        public CardView[][] getUsersHandsList() {
-            return usersHandsList;
+            this.hasAceM = input;
         }
 
         public void setNumberOfPlayers(int input) {
-            numberOfPlayers = input;
+            this.numberOfPlayers = input;
         }
 
         public void setHasFinishedSettingUp(boolean input) {
-            hasFinishedSettingUp = input;
+            this.hasFinishedSettingUp = input;
         }
 
         public void retrieveNewDeck() {
@@ -149,7 +151,7 @@ public class PlayView {
         void stand() {
             if (currentSide != 2) {     // if we're on the dealer's cards and they finish by standing, finalize the results
                 currentSide += 1;
-                if (numberOfPlayers == 2 && currentSide == 1) {       // if there's only two players, then skip the third side
+                if (numberOfPlayers == 2 && currentSide == 1) {       // if there's only two players, then skip the second side
                     currentSide = 2;
                 }
             } else {
@@ -247,7 +249,7 @@ public class PlayView {
                 if (cardList[card] != null) cardsInHandLength++;
             }
 
-            CardView newCard = new CardView(positionX, positiony, cardName);
+            CardView newCard = new CardView(positionX, positiony, cardName, currentSide, usersHandsList);
             cardList[cardsInHandLength] = newCard;      // make next card the new card
 
             usersHandsList[sideInt] = cardList;      // set all hands at the position with the modified list
@@ -316,10 +318,12 @@ public class PlayView {
         String cardName;
         JLabel cardDisplay;
 
-        CardView(int positionX, int positiony, String imageName) {
+        CardView(int positionX, int positiony, String imageName, int currentSideInput, CardView[][] usersHandsListInput) {
             // can be left without inheritance because this is an association
 
             // locate position
+            this.usersHandsList = usersHandsListInput;
+            this.currentSide = currentSideInput;
             this.positionX = positionX;
             this.positiony = positiony;
 
@@ -337,7 +341,7 @@ public class PlayView {
 
                     // nested case to check if there's an ace
                     // in CardFunctionality, if the value is > 21 it will check if this is true and then set their ace value to 1
-                    switch (getCurrentSide()) {
+                    switch (currentSide) {
                         case 0:
                             setAceL(true);
                             break;
@@ -361,7 +365,8 @@ public class PlayView {
 
             ImageIcon newCard;
             // create image
-            if (getCurrentSide() == 2 && getUsersHandsList()[2][0] == null) {        // if it's the dealer's first card
+            System.out.println(usersHandsList[2][0]);
+            if (currentSide == 2 && usersHandsList[2][0] == null) {        // if it's the dealer's first card
                 newCard = new ImageIcon("ExtraCards/" + "cardBack.png");
             } else {
                 newCard = new ImageIcon("Card/" + imageName);

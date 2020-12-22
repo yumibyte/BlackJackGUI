@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="85ab772b-8339-485b-8256-a41a106ad6ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BlackJack/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/MainMenuView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardFunctionality.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$CardView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BlackJack/PlayView$PlayViewGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BlackJack/PlayView$PlayViewGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenuView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlayView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,13 +142,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>138</line>
+          <line>140</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/PlayView.java</url>
-          <line>141</line>
+          <line>143</line>
           <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>368</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>369</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>366</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/CardFunctionality.java</url>
@@ -170,6 +196,30 @@
           </properties>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>150</line>
+          <properties class="PlayView.CardFunctionality" method="stand">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>114</line>
+          <properties class="PlayView.CardFunctionality" method="hit">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/PlayView.java</url>
+          <line>209</line>
+          <properties class="PlayView.CardFunctionality" method="createCard">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -180,6 +230,10 @@
         <watch expression="currentSide" language="JAVA" />
         <watch expression="playView.totalL" language="JAVA" />
         <watch expression="GUI.playView.usersHandsList" language="JAVA" />
+        <watch expression="getUsersHandsList()" language="JAVA" />
+        <watch expression="tempCards" language="JAVA" />
+        <watch expression="currentSide" language="JAVA" />
+        <watch expression="this" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
